@@ -4,8 +4,6 @@ var _vue = _interopRequireDefault(require("vue"));
 
 var _App = _interopRequireDefault(require("./App"));
 
-require("echarts-gl");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 // The Vue build version to load with the `import` command

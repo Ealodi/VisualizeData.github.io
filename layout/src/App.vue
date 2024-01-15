@@ -1,18 +1,19 @@
 <template>
   <div id="app">
-    <Earthdata/>
+    <mainbox/>
   </div>
 </template>
 
 <script>
-import Earthdata from './components/Earthdata.vue'
+import mainbox from './components/mainbox.vue'
 export default {
   name: 'App',
   components: {
-  Earthdata
+  mainbox
   }
 }
 </script>
+
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
