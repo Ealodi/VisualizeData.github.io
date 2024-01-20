@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color:blue;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+#div1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    background-color: transparent;
+   
+    height: 400px; /* 设置 body 的高度为视口的百分之百 */
+    width: 600px;  /* 设置 body 的宽度为视口的百分之百 */
+}
+
+.a_cy {
+    position: absolute;
+    display: block;
+    user-select: none;
+    text-decoration: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: color 0.3s ease-in-out;
+    white-space: nowrap;
+    text-stroke: 1px black;
+    text-shadow:
+        -1px -1px 0 black,  
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black;
+}
+.a_cy :hover {
+    transform: scale(1.2);
+}
