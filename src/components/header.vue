@@ -2,7 +2,7 @@
     <div class="left nav">
         <ul>
             <li class="nav_active"><i class="nav_1"></i><a href="index.html">数据概览</a> </li>
-            <li><i class="nav_2"></i><a href="area.html">车辆监控</a> </li>
+            <li><i class="nav_2"></i><a href="area">车辆监控</a> </li>
             <li><i class="nav_3"></i><a href="./src/assets/html/map.html">地图界面</a> </li>
         </ul>
     </div>
