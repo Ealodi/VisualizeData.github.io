@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>国家名称</title>
+<link type="text/css" href="./src/assets/area/css/index.css" rel="stylesheet">
+<script type="text/javascript">
+        document.documentElement.style.fontSize = document.documentElement.clientWidth /768*100 + 'px';
+</script>
+
+<script src="https://www.jq22.com/jquery/echarts-4.2.1.min.js"></script>
+</head>
+
+<body>
+    
+    <!-- <div id="header"></div> -->
+<div class="page">
+    <div class="title">俄罗斯</div>
+    <div class="bg">
+        <div class="leftArea">
+            <div class="countryMap area">
+                <h3>国家地图</h3>
+                <div class="biaoge" id="map"></div>
+        
+                <span class="border_bg_leftTop"></span>
+                <span class="border_bg_rightTop"></span>
+                <span class="border_bg_leftBottom"></span>
+                <span class="border_bg_rightBottom"></span>
+            </div>
+            <div class="info area">
+                <h3>这里是标题</h3>
+                <div class="biaoge biaoge_pai">
+                </div>
+                <span class="border_bg_leftTop"></span>
+                <span class="border_bg_rightTop"></span>
+                <span class="border_bg_leftBottom"></span>
+                <span class="border_bg_rightBottom"></span>
+            </div>
+        </div>
+        <div class="midArea">
+            <div class="zzt area">
+                <h3>各月数据</h3>
+                <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                <div class="biaoge" id="chartmain"></div>
+                
+                <span class="border_bg_leftTop"></span>
+                <span class="border_bg_rightTop"></span>
+                <span class="border_bg_leftBottom"></span>
+                <span class="border_bg_rightBottom"></span>
+            </div>
+            <div class="loudou area">
+                <h3>漏斗图 </h3>
+                <div class="biaoge biaoge_bi" id="loudou">
+                </div>
+                <span class="border_bg_leftTop"></span>
+                <span class="border_bg_rightTop"></span>
+                <span class="border_bg_leftBottom"></span>
+                <span class="border_bg_rightBottom"></span>
+            </div>
+        </div>
+        <div class="rightArea">
+            <div class="leida area">
+                <h3>国家新闻分步</h3>
+                <div class="biaoge" id="chartmain_bing"></div>
+
+                <span class="border_bg_leftTop"></span>
+                <span class="border_bg_rightTop"></span>
+                <span class="border_bg_leftBottom"></span>
+                <span class="border_bg_rightBottom"></span>
+            </div>
+            <div class="lunbo area">
+                <h3>实时新闻</h3>
+                <div class="biaoge biaoge_list" id="lbt">
+                
+            </div>
+                <span class="border_bg_leftTop"></span>
+                <span class="border_bg_rightTop"></span>
+                <span class="border_bg_leftBottom"></span>
+                <span class="border_bg_rightBottom"></span>
+            </div>
+        </div>
+    </div>
+</div>
+<!--数字增长累加动画-->
+<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script type="module" src="./src/main_area.js"></script>
+</body>
+</html>
