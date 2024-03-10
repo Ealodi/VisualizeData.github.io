@@ -17,7 +17,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://news.cctv.com',
+        target: 'https://so.news.cn',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },

@@ -12,7 +12,8 @@
         $.getJSON('/src/assets/json/area.json', function(data) {
             const nameArray = Object.keys(data["t2"]);
             const transformedDataArray = Object.entries(data["t2"]).map(([name, value]) => ({ name, value }));
-
+            var total = 0;
+            transformedDataArray.forEach(item =>{total += item;});
             // 指定图表的配置项和数据
             var option = {
                 title: {
@@ -21,6 +22,7 @@
                 },
                 tooltip: {
                     trigger: 'item',
+                    position: 'inside',
                     formatter: '{a} <br/>{b} : {c}'
                 },
                 legend: {
@@ -39,12 +41,21 @@
                     {
                         name: '漏斗图',
                         type: 'funnel',
-                        width: '50%',
-                        height: '70%',
+                        width: '60%',
+                        height: '80%',
                         left: '20%',
                         top: '10%',
                         bottom: '5%',
-                        data: transformedDataArray
+                        data: transformedDataArray,
+                        label: {
+                            show: true,
+                            formatter: function (params) {
+                                var percentage = (params.data.value / transformedDataArray[0].value) * 100;
+                                return `${percentage.toFixed(0)}%`;
+                            },
+                            color: '#000',
+                            position: 'inside' // 将占比显示在区块中间
+                        },
                     }
                 ]
             };

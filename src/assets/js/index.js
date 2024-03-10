@@ -1,7 +1,8 @@
 $(function(){
-    char1("2018-01");
-    char2("2018-01");
-    char3("2018-01");
+    char1("2020-01");
+    char2("2020-01");
+    char3("2020-01");
+    timeunders();
     // 获取滑动条元素
     var slider = document.getElementById('slider');
     // 监听滑动条的变化
@@ -37,52 +38,53 @@ function char1(date) {
                 value: newsData[category]
             });
         }
-
-        option = {
-            tooltip : {
-                trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)",
+        var option = {
+            tooltip: {
+              trigger: 'item',
+              position: 'top-left',
+            },
+            grid: {
+                left: '10%',
+                containLabel: false,
             },
             legend: {
-                orient : 'vertical',
-                x : 'right',
-                textStyle : {
-                    color : '#ffffff',
+                orient: 'vertical',
+                right: 0,
+                textStyle: {
+                    color: '#fff', // Set the desired font color (e.g., red)
                 },
-                data: pieData.map(item => item.name),
             },
-    
-            calculable : false,
-            series : [
-                {
-                    name:'新闻类型',
-                    type:'pie',
-                    center: ['40%', '50%'],
-                    radius : ['40%', '70%'],
-                    itemStyle : {
-                        normal : {
-                            label : {
-                                show : false
-                            },
-                            labelLine : {
-                                show : false
-                            }
-                        },
-                        emphasis : {
-                            label : {
-                                show : true,
-                                position : 'center',
-                                textStyle : {
-                                    fontSize : '15',
-                                    fontWeight : 'bold'
-                                }
-                            }
-                        }
-                    },
-                    data: pieData,
-                }
+            series: [
+              {
+                name: 'Access From',
+                type: 'pie',
+                left: 0,
+                radius: ['40%', '80%'],
+                avoidLabelOverlap: false,
+                itemStyle: {
+                  borderRadius: 10,
+                  borderColor: '#fff',
+                  borderWidth: 0
+                },
+                label: {
+                  show: false,
+                  position: 'center',
+                  formatter: '{b}\n{d}%' // 显示名称和所占比例
+                },
+                emphasis: {
+                  label: {
+                    show: true,
+                    fontSize: 20,
+                    fontWeight: 'bold'
+                  }
+                },
+                labelLine: {
+                  show: false
+                },
+                data: pieData
+              }
             ]
-        };
+          };
     
         myChart.setOption(option);
         window.addEventListener('resize', function () {myChart.resize();})
@@ -254,8 +256,6 @@ function char2(date) {
     myChart.getZr().off('mousewheel');
     myChart.getZr().on('mousewheel', mouseWheelHandler);
 }
-
-
 function char3(date) {
     var dates = dateToMore(date);
     var year = dates[0];
@@ -329,5 +329,73 @@ function char3(date) {
     });
 
 }
+function timeunders() {
+    // 初始化 ECharts 实例
+    var myChart = echarts.init(document.getElementById('timeunder'));
 
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+    
+        },
+        tooltip: {},
+        grid: {
+            top: '50%',
+            left: '1%',  // 调整左边距
+            right: '1%', // 调整右边距
+            containLabel: false,
+        },
+        legend: {
+            data:['销量']
+        },
+        xAxis: {
+            data: ['2020-01','2020-02','2020-03','2020-04','2020-05','2020-06','2020-07','2020-08','2020-09','2020-10','2020-11','2020-12',
+                    '2021-01','2021-02','2021-03','2021-04','2021-05','2021-06','2021-07','2021-08','2021-09','2021-10','2021-11','2021-12',
+                    '2022-01','2022-02','2022-03','2022-04','2022-05','2022-06','2022-07','2022-08','2022-09','2022-10','2022-11','2022-12',
+                    '2023-01','2023-02','2023-03','2023-04','2023-05','2023-06','2023-07','2023-08','2023-09','2023-10','2023-11','2023-12'],
+            axisLine: {
+                show: false // 隐藏x轴线
+            },
+            axisTick: {
+                show: false // 隐藏x轴刻度
+            },
+            splitLine: {
+                show: false // 隐藏背景网格线
+            },
+            axisLabel: {
+                show: false // 隐藏y轴刻度上的数值
+            }
+
+        },
+        yAxis: {
+            axisLine: {
+                show: false // 隐藏y轴线
+            },
+            axisTick: {
+                show: false // 隐藏y轴刻度
+            },
+            splitLine: {
+                show: false // 隐藏背景网格线
+            },
+            axisLabel: {
+                show: false // 隐藏y轴刻度上的数值
+            }
+        },
+        series: [{
+            name: '数据量',
+            type: 'bar',
+            data: [150, 230, 224, 218, 135, 147, 260, 320, 332, 301, 334, 390,
+                    150, 230, 224, 218, 135, 147, 260, 320, 332, 301, 334, 390,
+                    150, 230, 224, 218, 135, 147, 260, 320, 332, 301, 334, 390,
+                    150, 230, 224, 218, 135, 147, 260, 320, 332, 301, 334, 390],
+            itemStyle: {
+                color: 'steelblue'
+            }
+        }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+    window.addEventListener('resize', function () {myChart.resize();});
+}
 

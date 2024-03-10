@@ -99,6 +99,36 @@
             bgColor:'rgb(117, 133, 162,0.12)',
             color:'#7585A2',
           },
+          {
+            name: '导航性5',
+            value: '7',
+            bgColor:'rgb(117, 133, 162,0.12)',
+            color:'#7585A2',
+          },
+          {
+            name: '导航性1',
+            value: '7',
+            bgColor:'rgb(117, 133, 162,0.12)',
+            color:'#7585A2',
+          },
+          {
+            name: '导航性2',
+            value: '7',
+            bgColor:'rgb(117, 133, 162,0.12)',
+            color:'#7585A2',
+          },
+          {
+            name: '导航性3',
+            value: '7',
+            bgColor:'rgb(117, 133, 162,0.12)',
+            color:'#7585A2',
+          },
+          {
+            name: '导航性4',
+            value: '7',
+            bgColor:'rgb(117, 133, 162,0.12)',
+            color:'#7585A2',
+          },
         ],
         newValues: {
         "发展": 143,
@@ -110,7 +140,12 @@
         "春运": 86,
         "市场": 85,
         "春节": 83,
-        " 018": 82
+        " 018": 82,
+        "创新": 96,
+        "新春": 89,
+        "扶贫": 88,
+        "防控": 81,
+        "文化": 76
         },
     };
     },
@@ -156,13 +191,20 @@
       },
       // 改变词云关键词
       changeWords() {
-        this.dataList = Object.entries(this.newValues).map(([name, value]) => {
+        var SingelObject = Object.entries(this.newValues);
+        const numericValues = SingelObject.map(vl => vl[1]);
+        const minValue = Math.min(...numericValues);
+        const maxValue = Math.max(...numericValues);
+        this.dataList = SingelObject.map(([name, value]) => {
+          const [area, fontSize] = this.calculateArea(value,minValue,maxValue);
           // 根据新的数据结构创建 dataList 中的对象
           return {
             name: name,
             value: String(value),
             bgColor: this.generateRandomSimilarColor(this.originalColor),
-            color: this.getRandomBrightColor()
+            color: this.getRandomBrightColor(),
+            area: area,
+            fontSize: fontSize,
           };
         });
       },
@@ -285,7 +327,12 @@
           this.tagContent[i].style.left = this.tagAttrList[i].cx + len - this.tagAttrList[i].offsetWidth/2 + 'px';
           this.tagContent[i].style.top = this.tagAttrList[i].cy + height - this.tagAttrList[i].offsetHeight/2 + 'px';
           // this.tagContent[i].style.fontSize = Math.ceil(12 * this.tagAttrList[i].scale/2) + 8 + 'px';
-          this.tagContent[i].style.fontSize = Math.ceil(12 * this.tagAttrList[i].scale/2) + 4 + 'px';
+          // 设置字体大小
+          this.tagContent[i].style.fontSize = this.dataList[i].fontSize + 'px';
+          // 设置圆形的面积
+          const area = this.dataList[i].area;
+          this.tagContent[i].style.width = area + 'px';
+          this.tagContent[i].style.height = area + 'px';
           this.tagContent[i].style.filter = "alpha(opacity="+100 * this.tagAttrList[i].alpha+")";
           this.tagContent[i].style.opacity = this.tagAttrList[i].alpha;
         }
@@ -342,7 +389,18 @@
         const adjustedColor = `rgb(${adjustColor(r)}, ${adjustColor(g)}, ${adjustColor(b)})`;
 
         return adjustedColor;
-      }
+      },
+        // 计算圆形的面积
+      calculateArea(value,minValue,maxValue) {
+        // 创建线性比例尺
+        var linearScale = d3.scaleLinear()
+          .domain([minValue, maxValue]) // 输入数据的范围
+          .range([50, 100]);  // 输出数据的范围
+        var linear2 = d3.scaleLinear()
+          .domain([minValue, maxValue])
+          .range([10,30])
+        return [linearScale(value),linear2(value)];
+      },
     }
   };
 </script>
@@ -375,7 +433,7 @@
       height: 50px;
       border-radius: 50%;
       text-align: center;
-
+      
       display: flex;
       align-items: center;
       justify-content: center;

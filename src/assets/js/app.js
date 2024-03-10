@@ -31,8 +31,8 @@ let lastClickTime = 0;
 let clickedCoordinates;
 
 const flagEndpoint = 'https://corona.lmao.ninja/assets/img/flags';
-
 init();
+
 
 function init() {
 
@@ -89,12 +89,12 @@ let dates = [];
 let countries = [];
 let featureCollection = [];
 
-// // Play button
-// const playButton = document.querySelector('.play-button');
+// Play button
+const playButton = document.querySelector('.play-button');
 // Slider
 const slider = document.querySelector('.slider');
 // Slider date
-//const sliderDate = document.querySelector('.slider-date');
+const sliderDate = document.querySelector('#value-tooltip');
 
 var CN_COUNTRIES={};
 WORLD_COUNTRIES.forEach(element => {
@@ -127,7 +127,7 @@ async function getCases() {
   //Set slider values
   //slider.max = dates.length - 1;
   //slider.value = 0;
-
+  playButton.disabled = false;
   updateCounters();
   updatePolygonsData();
 
@@ -220,3 +220,56 @@ if ('oninput' in slider) {
     false
   );
 }
+function sliderDateMake(input) {
+  // 使用split函数将输入字符串分割成年份和月份的数组
+  var parts = input.split('-');
+  
+  if (parts.length === 2) {
+    // 提取分割后的年份和月份
+    var month = parts[0].length === 1 ? '0' + parts[0] : parts[0];
+    var year = parts[1];
+    
+    // 构建新的格式化字符串
+    var formattedDate = year + '-' + month;
+    
+    return formattedDate;
+  } else {
+    // 如果输入字符串不符合要求，则返回原始输入
+    return input;
+  }
+}
+let interval;
+playButton.addEventListener('click', () => {
+  if (playButton.innerText === '播放') {
+    playButton.innerText = '暂停';
+  } else {
+    playButton.innerText = '播放';
+    world.controls().autoRotate=false;
+    clearInterval(interval);
+    return;
+  }
+
+  // Check if slider position is max
+  if (+slider.value === dates.length - 1) {
+    slider.value = 0;
+  }
+
+  sliderDate.innerHTML = sliderDateMake(dates[slider.value]);
+  world.controls().autoRotate=true;
+  world.controls().autoRotateSpeed=4;
+  interval = setInterval(() => {
+    slider.value++;
+    var event = new Event('input');
+    slider.dispatchEvent(event);
+    sliderDate.innerHTML = sliderDateMake(dates[slider.value]);
+    updateCounters();
+    updatePolygonsData();
+    
+    if (+slider.value === dates.length - 1) {
+      playButton.innerHTML = '播放';
+      world.controls().autoRotate=false;
+      //world.controls().autoRotateSpeed=5;
+      clearInterval(interval);
+    }
+  }, 400);
+});

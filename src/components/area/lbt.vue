@@ -36,7 +36,8 @@ export default {
         $(".shu4").numScroll();
         $(".shu5").numScroll();
         $(".shu6").numScroll();
-        this.postData();
+        //this.postData();
+        this.postData2();
     },
     methods: {
         postData() {
@@ -93,6 +94,47 @@ export default {
             // 使用路由导航或 window.location 跳转
             window.location.href = url;
         },
+        postData2() {
+            fetch("/api/getNews?keyword=%E4%BF%84%E4%B9%8C&curPage=1&sortField=0&searchFields=1&lang=cn", {
+                headers: {
+                    "accept": "application/json, text/javascript, */*; q=0.01",
+                    "accept-language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
+                    "cache-control": "no-cache",
+                    "pragma": "no-cache",
+                    "sec-ch-ua": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"122\", \"Google Chrome\";v=\"122\"",
+                    "sec-ch-ua-mobile": "?0",
+                    "sec-ch-ua-platform": "\"Windows\"",
+                    "sec-fetch-dest": "empty",
+                    "sec-fetch-mode": "cors",
+                    "sec-fetch-site": "same-origin",
+                    "x-requested-with": "XMLHttpRequest"
+                },
+                referrer: "https://so.news.cn/",
+                referrerPolicy: "strict-origin-when-cross-origin",
+                method: "GET",
+                mode: "cors",
+                credentials: "include"
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Handle the returned data here
+                var json_content = data["content"]["results"];
+                json_content.forEach(newsInfo => {
+                    var time = newsInfo["pubtime"].slice(0,11);
+                    var title = newsInfo["title"].replace("<font color=red>","").replace("</font>","").replace("&nbsp;|&nbsp;","|");
+                    var url = newsInfo["url"];
+                    var source = newsInfo["sitename"];
+                    var list = [time,source,title];
+                    this.listData.push(list);
+                    this.urls.push(url);
+                });
+                console.log(data);
+            })
+            .catch(error => {
+                // Handle errors here
+                console.error("Error fetching data:", error);
+            });
+        }
     }
 }
 </script>

@@ -57,9 +57,10 @@ h3{
 
 .area {
 	position: relative;
-	box-shadow: 5px 10px 18px #9f9f9f;
+	box-shadow: 5px 10px 10px #9f9f9f;
     border: 1px solid #cbcbcb;
 	padding: 5px;
+	overflow: hidden;
 }	
 .bg{
 	display: flex;
@@ -99,10 +100,7 @@ h3{
 	flex: 48%;
 	height: 100%;
 }
-.leida {
-	width: 95%;
-	flex: 50%;
-}
+
 
 /*地图下面的信息栏*/
 .left .info {
@@ -121,18 +119,18 @@ h3{
 /*地图栏*/
 .left .countryMap {
 	width: 95%;
-	height: 65%;
+	height: 69.3%;
 }
 /*柱状图*/
 .zzt {
 	width: 95%;
-	flex: 50%;
+	flex: 52%;
 }
 /*漏斗图*/
 .loudou {
 	margin-top: 3%;
 	width: 95%;
-	flex: 50%;
+	flex: 42%;
 }
 
 .biaoge{
@@ -149,8 +147,10 @@ h3{
 	border:0.008rem solid rgba(14,253,255,0.5);
 	margin-top: 3%;
 	width: 95%;
-	height: 39%;
-}	
-.biaoge_list{
+	flex: 38%;
 	overflow:hidden;
-	position: relative;}
+}
+.leida {
+	width: 95%;
+	flex: 56%;
+}

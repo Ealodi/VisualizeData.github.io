@@ -93,7 +93,8 @@ export default{
 									   width:2,
 									  }
 									},
-								}
+								},
+                                
 							},
 							{
 								name: '折线二',
@@ -169,7 +170,6 @@ export default{
                     }
                 }
             },
-
             dataZoom: [
                 {
                     type: 'inside'
@@ -210,8 +210,17 @@ export default{
                             )
                         }
                     },
-                    data: data
+                    data: data,
+                    label: {
+                        show: true,
+                        position: 'top',
+                        textStyle: {
+                            color: '#fff',
+                            fontSize: 12
+                        }
+                    }
                 }
+
             ]
         };
         

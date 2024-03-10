@@ -16,12 +16,12 @@ updateTooltip();
 // Add event listener for slider input
 slider.on("input", updateTooltip);
 function mapNumberToDateString(number) {
-    if (number < 0 || number > 71) {
+    if (number < 0 || number > 47) {
         return "输入数字应在0到71之间";
     }
 
     // 计算年份和月份
-    const year = Math.floor(number / 12) + 2018;
+    const year = Math.floor(number / 12) + 2020;
     const month = (number % 12) + 1;
 
     // 构建日期字符串
