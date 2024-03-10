@@ -23,13 +23,13 @@
       </el-button>
       <div class="Newselect" id="select2">
         <el-select
-        v-model="value"
+        v-model="value2"
         placeholder="Select"
         size="large"
         style="width: 240px"
       >
         <el-option
-          v-for="item in options"
+          v-for="item in options2"
           :key="item.value"
           :label="item.label"
           :value="item.value"
@@ -49,38 +49,46 @@ const count = ref(0)
 const load = () => {
   count.value += 2
 }
-const value = ref('')
-
+const value = ref('新浪新闻')
+const value2 = ref('澎湃新闻')
 const options = [
   {
     value: 'Option1',
-    label: 'Option1',
+    label: '新浪新闻',
   },
   {
     value: 'Option2',
-    label: 'Option2',
+    label: '腾讯新闻',
   },
   {
     value: 'Option3',
-    label: 'Option3',
-  },
-  {
-    value: 'Option4',
-    label: 'Option4',
-  },
-  {
-    value: 'Option5',
-    label: 'Option5',
-  },
+    label: '中新网',
+  }
 ]
+const options2 = [
+  {
+    value: 'Option1',
+    label: '澎湃新闻',
+  },
+  {
+    value: 'Option2',
+    label: '新华网',
+  },
+  {
+    value: 'Option3',
+    label: '网易新闻',
+  }
+]
+
 </script>
+
+
 <style>
 .el-select {
   height: 50px;
   padding: 0;
   margin: 0;
 }
-
 </style>
 <style scoped>
 .select {
@@ -104,19 +112,19 @@ const options = [
 .Newselect {
   display: flex;
   flex-direction: column;
-  width: 400px;
-  padding: 0;
-  box-shadow: 5px 10px 10px #9f9f9f;
-  border: 1px solid #cbcbcb;
+  width: 380px;
   height: 300px; /* 固定树的高度为300像素，可以根据需要调整 */
   overflow: hidden; /* 添加滚动条 */
   background-color: transparent;
+  justify-content: center; /* 在水平方向上居中 */
+  align-items: center; 
 }
 .infinite-list {
-  flex: 80%;
-  margin: 1%;
-  width: 100%;
+  flex: 60%;
+  margin-left: 3%;
+  width: 95%;
   list-style: none;
+  padding: 0;
 }
 .infinite-list .infinite-list-item {
   display: flex;
