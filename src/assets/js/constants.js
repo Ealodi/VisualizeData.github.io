@@ -3,7 +3,7 @@ export const GLOBE_IMAGE_URL =
 export const BACKGROUND_IMAGE_URL = '/src/assets/pic/touming.png';
  // '/assets/pic/night-sky.png';
 export const GEOJSON_URL =
-  'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson';
+  '/geo/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson';
 export const CASES_API =
   process.env.NODE_ENV === 'development'
     ? 'http://localhost:3030'
