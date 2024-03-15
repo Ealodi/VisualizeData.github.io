@@ -57,8 +57,9 @@ h3{
 
 .area {
 	position: relative;
-	box-shadow: 5px 10px 10px #9f9f9f;
-    border: 1px solid #cbcbcb;
+	/* box-shadow: 5px 10px 10px #9f9f9f; */
+    /* border: 1px solid #cbcbcb; */
+	border: 1px solid #a4c5d4;
 	padding: 5px;
 	overflow: hidden;
 }	

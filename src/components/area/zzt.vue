@@ -151,7 +151,7 @@ export default{
             },
             yAxis: {
                 type: 'value',
-                name: '单位：元',
+                name: '单位：条',
                 axisLine: {
                     show: true,
                     symbol: ['none', 'arrow'],
@@ -188,28 +188,16 @@ export default{
                 },
                 {
                     type: 'bar',
-                    itemStyle: {
-                        color: new echarts.graphic.LinearGradient(
-                            0, 0, 0, 1,
-                            [
-                                {offset: 0, color: '#0efdff'},
-                                {offset: 0.5, color: '#188df0'},
-                                {offset: 1, color: '#188df0'}
-                            ]
-                        )
-                    },
-                    emphasis: {
-                        itemStyle: {
-                            color: new echarts.graphic.LinearGradient(
-                                0, 0, 0, 1,
-                                [
-                                    {offset: 0, color: '#2378f7'},
-                                    {offset: 0.7, color: '#2378f7'},
-                                    {offset: 1, color: '#0efdff'}
-                                ]
-                            )
-                        }
-                    },
+                    type: 'bar',
+itemStyle: {
+    color: '#188df0' // 将填充颜色设置为纯色，例如深蓝色
+},
+emphasis: {
+    itemStyle: {
+        color: '#2378f7' // 将强调样式的填充颜色设置为纯色，例如更深的蓝色
+    }
+}
+,
                     data: data,
                     label: {
                         show: true,

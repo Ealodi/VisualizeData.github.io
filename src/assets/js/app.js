@@ -38,7 +38,7 @@ function init() {
 
   world = Globe()(globeContainer)
     .globeImageUrl(GLOBE_IMAGE_URL)
-    .backgroundColor('#081832')
+    .backgroundColor('#02083a')
     //.backgroundImageUrl(BACKGROUND_IMAGE_URL)
     .showGraticules(false)
     .polygonAltitude(0.06)

@@ -288,12 +288,13 @@ function char3(date) {
             },
             legend: { // 图例
                 orient: 'vertical', // 垂直布局
-                right: 0, // 位置
-                x : 'right',
+                right: 2, // 位置
+                // x : 'right',
+                data: tl.map(item => item.name),
                 textStyle : {
                     color : '#ffffff',
                 },
-                data: tl.map(item => item.name)
+                
             },
             series: [
                 {

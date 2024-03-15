@@ -1,7 +1,7 @@
 var maxWidth, maxHeight, maxTop;
 var totalData;
 
-function loadBlogPostData(draw, top ,filepath,flag){
+function loadBlogPostData(draw,top,filepath,flag,categories){
     var topics = [];
     maxWidth = 2000, maxHeight = 2000, maxTop = 50;
     totalData = null;
@@ -19,7 +19,7 @@ function loadBlogPostData(draw, top ,filepath,flag){
             var endDate = inputFormat.parse('2023-12-31T00:00:00');
             return      time  >= startDate && time < endDate;
         });
-
+        console.log(rawData);
         var data = {};
         d3.map(rawData, function(d, i){
             var date = Date.parse(d.time);
@@ -61,9 +61,9 @@ function loadBlogPostData(draw, top ,filepath,flag){
                 date: date,
                 words: words
             }
-        }).sort(function(a, b){//sort by date
-            return outputFormat.parse(a.date) - outputFormat.parse(b.date);
-        });
+            }).sort(function(a, b){//sort by date
+                return outputFormat.parse(a.date) - outputFormat.parse(b.date);
+            });
         processSudden(data);
 
         totalData = getTop(data, topics, maxTop).slice(1); // omit first timestep
@@ -71,85 +71,9 @@ function loadBlogPostData(draw, top ,filepath,flag){
         globalData = JSON.parse(JSON.stringify(resultData));
 
         // resultData = getTop(data, topics, top);
-        draw(resultData,flag);
+        draw(resultData,flag,categories);
     });
 }
-// function loadAuthorData(draw, top){
-//     var topics = categories;
-//     d3.tsv(fileName, function(error, rawData) {
-//         if (error) throw error;
-//         //Filter
-//         var startYear = 2004;
-//         var endYear = 2016;
-//         if(fileName.indexOf("test")>=0){
-//             startYear = 2018;
-//             endYear = 2023;
-//         }
-//         else if(fileName.indexOf("Cards_Fries")>=0 || fileName.indexOf("Cards_PC")>=0){
-//             startYear = 2005;
-//             endYear = 2013;
-//         }
-//         else if(fileName.indexOf("PopCha")>=0){
-//             startYear = 2000;
-//             endYear = 2016;
-//         }
-//         else if(fileName.indexOf("VIS")>=0){
-//             startYear = 1994;
-//             endYear = 2016;
-//         }
-//         rawData = rawData.filter(d=>{
-//             return d.Year >= startYear && d.Year <= endYear;
-//         });
-//         var data={};
-//         d3.map(rawData, function(d, i){
-//             var year = +d["Year"];
-//             var topic = d["Conference"];
-//             if(!data[year]) data[year] = {};
-//             data[year][topic] = (data[year][topic]) ? ((data[year][topic])+";" + d["Author Names"]): (d["Author Names"]);
-//         });
-//         var data = d3.keys(data).map(function(year, i){
-//             var words = {};
-//             topics.forEach(topic => {
-//                 var raw = {};
-//                 if(!data[year][topic]) data[year][topic] = "";
-//                 raw[topic] = data[year][topic].split(";");
-//                 //Count word frequencies
-//                 var counts = raw[topic].reduce(function(obj, word){
-//                     if(!obj[word]){
-//                         obj[word] = 0;
-//                     }
-//                     obj[word]++;
-//                     return obj;
-//                 }, {});
-//                 //Convert to array of objects
-//                 words[topic] = d3.keys(counts).map(function(d){
-//                     return{
-//                         sudden: 1,
-//                         text: d,
-//                         frequency: counts[d],
-//                         topic: topic,
-//                         id: d.replace(/[^a-zA-Z0-9]/g,'_') + "_" + topic + "_" + i
-//                     }
-//                 }).sort(function(a, b){//sort the terms by frequency
-//                     return b.frequency-a.frequency;
-//                 }).filter(function(d){return d.text; })//filter out empty words
-
-//             });
-//             return {
-//                 date: year,
-//                 words: words
-//             }
-//         }).sort(function(a, b){//sort by date
-//             return a.date - b.date;
-//         });
-//         processSudden(data);
-
-//         totalData = getTop(data, topics, maxTop).slice(1); // omit first timestep
-//         var resultData = getTop(JSON.parse(JSON.stringify(totalData)), topics, top);
-//         globalData = JSON.parse(JSON.stringify(resultData));
-//         draw(resultData);
-//     });
-// }
 function loadQuantumComputing(draw, top) {
     d3.json("data/quantum.json", function (error, data) {
         console.log(data);

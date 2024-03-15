@@ -31,8 +31,8 @@ var svg = container.append('svg')
         width: container.width,
     });
 var initialDataset = "test";
-var categories = ["category"];
-
+var category_top = ["category"];
+var category_bottom = ['person','location','keywords'];
 var fileName;
 var initTop = 15;
 var opacity, layerPath, maxFreq;
@@ -50,16 +50,15 @@ var legendGroup_ = svg_bottom.append('g').attr("id", "legend_");
 fileName = initialDataset;
 var spinner;
 var flag_bottom_up = 0;
-loadData(fileName);
+loadData('test',category_top);
 
-function loadData(initialDatapath) {
+function loadData(initialDatapath,category) {
     var filepath = "/wordstream/tsv/" + initialDatapath + ".tsv"; // Add data folder path
-    categories = ["category"];
-    loadBlogPostData(draw, initTop ,filepath,flag_bottom_up);
+    loadBlogPostData(draw, initTop ,filepath,flag_bottom_up,category);
     //draw(resultData);
 }
 
-function draw(data,flag) {
+function draw(data,flag,categories) {
     //Layout data
     var font = "Arial";
     var interpolation = "cardinal";
@@ -577,4 +576,5 @@ function styleGridlineNodes(gridlineNodes) {
     });
 }
 flag_bottom_up = 1;
-loadData(fileName);
+
+loadData('pengpai',category_bottom);
