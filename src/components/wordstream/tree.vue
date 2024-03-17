@@ -18,9 +18,10 @@
           <li v-for="item in tops" :key="item" class="infinite-list-item"><p>{{ item }}</p></li>
         </ul>
       </div>
-      <el-button type="primary">
+      <Next />
+      <!-- <el-button type="primary">
         开始对比<el-icon class="el-icon--right"><ArrowRight /></el-icon>
-      </el-button>
+      </el-button> -->
       <div class="Newselect" id="select2">
         <el-select
         v-model="value2"
@@ -45,6 +46,8 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
 import { ArrowRight } from '@element-plus/icons-vue'
+import Next from './next.vue'
+
 const count = ref(0)
 const load = () => {
   count.value += 2

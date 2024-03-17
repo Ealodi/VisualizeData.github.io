@@ -14,6 +14,7 @@
 </template>
  
 <script>
+import * as d3 from 'd3';
   export default {
     name: "word-cloud",
     data() {
@@ -156,7 +157,7 @@
         for (const mutation of mutationsList) {
           if (mutation.type === 'childList' && mutation.target === tooltipDiv) {
             var tooltipText = tooltipDiv.innerText;
-            var dates = dateToMore(tooltipText);
+            var dates = this.dateToMore(tooltipText);
             // 保存正确的 this
             const self = this;
             d3.json("src/assets/json/ciyun.json").then(function(data) {
@@ -408,6 +409,7 @@
  
 <style scoped>
 .cloud-bed {
+  margin-top: 40px;
   width: 200px;
   height: 200px;
   margin: auto;

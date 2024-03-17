@@ -1,5 +1,5 @@
 //河流词云
-const initWidth = 1000,
+var initWidth = 1000,
     initHeight = 300,
     initMinFont = 15,
     initMaxFont = 35,
@@ -12,9 +12,9 @@ var globalWidth = initWidth,
     globalTop = initTop,
     globalData;
 var allW;
-const color = d3.scale.category10();
-const axis = d3.svg.axis().ticks(4);
-const axisFont = d3.svg.axis().tickValues([0, 25, 50, 75, 100]);
+var color = d3.scale.category10();
+var axis = d3.svg.axis().ticks(4);
+var axisFont = d3.svg.axis().tickValues([0, 25, 50, 75, 100]);
 
 // 设置一个具有固定宽度和水平滚动的容器 div
 var container = d3.select("#wordstream");
@@ -31,7 +31,7 @@ var svg = container.append('svg')
         width: container.width,
     });
 var initialDataset = "test";
-var category_top = ["category"];
+var category_top = ['person','location','organization','miscellaneous'];
 var category_bottom = ['person','location','keywords'];
 var fileName;
 var initTop = 15;
@@ -50,7 +50,7 @@ var legendGroup_ = svg_bottom.append('g').attr("id", "legend_");
 fileName = initialDataset;
 var spinner;
 var flag_bottom_up = 0;
-loadData('test',category_top);
+loadData('huanqiuwang21',category_bottom);
 
 function loadData(initialDatapath,category) {
     var filepath = "/wordstream/tsv/" + initialDatapath + ".tsv"; // Add data folder path
@@ -113,9 +113,9 @@ function draw(data,flag,categories) {
     //Display time axes
     var dates = [];
     boxes.data.forEach(row => {
-        dates.push(row.date);
+        dates.push(row.date.split(' ')[0]);
     });
-    
+
     if (flag == 1){
         var xAxisScale = d3.scale.ordinal().domain(dates).rangeBands([0, width]);
         var xAxis = d3.svg.axis().orient('bottom').scale(xAxisScale);
@@ -577,4 +577,4 @@ function styleGridlineNodes(gridlineNodes) {
 }
 flag_bottom_up = 1;
 
-loadData('pengpai',category_bottom);
+loadData('pengpai_',category_bottom);

@@ -2,6 +2,7 @@
     <div id="map-container"></div>
 </template>
 <script>
+import * as d3 from 'd3'; // 导入 D3 库
     export default {
         mounted() {
             var svgUrl = 'https://img.hcharts.cn/mapdata/countries/ru/ru-all.svg';

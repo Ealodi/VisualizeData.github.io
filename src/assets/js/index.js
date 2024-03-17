@@ -1,19 +1,17 @@
 $(function(){
-    char1("2020-01");
-    char2("2020-01");
-    char3("2020-01");
-    timeunders();
     // 获取滑动条元素
     var slider = document.getElementById('slider');
     // 监听滑动条的变化
-    slider.addEventListener('input', () => {
-        const tooltip = document.getElementById("value-tooltip");
-        const value = tooltip.textContent;
-        char1(value);
-        char3(value);
-        char2(value);
-    });
+    slider.addEventListener('input', init());
 })
+function init() {
+    const tooltip = document.getElementById("value-tooltip");
+    const value = tooltip.textContent;
+    char1(value);
+    char3(value);
+    char2(value);
+    timeunders();
+}
 function dateToMore(date) {
     var parts = date.split("-");
     var year = parts[0];

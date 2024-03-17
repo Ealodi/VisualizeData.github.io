@@ -15,8 +15,8 @@ function loadBlogPostData(draw,top,filepath,flag,categories){
 
         rawData = rawData.filter(function(d){
             var time = Date.parse(d.time);
-            var startDate =  inputFormat.parse('2018-01-01T00:00:00');
-            var endDate = inputFormat.parse('2023-12-31T00:00:00');
+            var startDate =  inputFormat.parse('2022-01-01T00:00:00');
+            var endDate = inputFormat.parse('2022-12-31T00:00:00');
             return      time  >= startDate && time < endDate;
         });
         console.log(rawData);

@@ -5,9 +5,7 @@ const tooltip = d3.select("#value-tooltip");
 // Function to update the tooltip value and position
 function updateTooltip() {
     const value = slider.property("value");
-
-    tooltip
-        .text(mapNumberToDateString(value))
+    tooltip.text(mapNumberToDateString(value));
 }
 
 // Initial update of the tooltip
