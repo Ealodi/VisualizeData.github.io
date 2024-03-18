@@ -1,6 +1,9 @@
 <template>
     <div class="bg">
         <div class="left">
+			<div class="select area">
+				<SelectMore />
+			</div>
             <div class="countryMap area">
                 <h3>国家地图</h3>
                 <div class="biaoge" id="map">
@@ -61,6 +64,7 @@ import Loudou from './loudou.vue'
 import Map from './map.vue'
 import Statistic from './statistic.vue'
 import Zhuzt from './zzt.vue'
+import SelectMore from './select.vue'
 import * as d3 from 'd3'; // 导入 D3 库
 export default {
     components: {
@@ -70,11 +74,38 @@ export default {
         Loudou,
         Map,
         Statistic,
-        Zhuzt
+        Zhuzt,
+		SelectMore
     }
 }
 </script>
 <style scoped>
+.select {
+	display: flex;
+	width: 95%;
+	flex: 10%;
+	justify-content: space-around;
+}
+/*地图下面的信息栏*/
+.left .info {
+	display: flex;
+	margin-top: 2%;
+	flex: 25%;
+	width: 95%;
+}
+#statics {
+	justify-content: center;
+	flex: 55%;
+}
+#country {
+	flex: 40%;
+}
+/*地图栏*/
+.left .countryMap {
+	margin-top: 2%;
+	width: 95%;
+	height: 55%;
+}
 h3{
 	font-size:14px;
 	color:#fff;
@@ -106,7 +137,7 @@ h3{
 	 }
 .area {
 	position: relative;
-	/* box-shadow: 5px 10px 10px #9f9f9f; */
+	box-shadow: 5px 10px 10px #9f9f9f;
     /* border: 1px solid #cbcbcb; */
 	border: 1px solid #a4c5d4;
 	padding: 5px;
@@ -126,6 +157,8 @@ h3{
 }
 /*左边栏*/
 .bg .left {
+	display: flex;
+	flex-direction: column;
 	width: 42%;
 	height: 95%;
 	margin-left: 2%;
@@ -152,25 +185,6 @@ h3{
 }
 
 
-/*地图下面的信息栏*/
-.left .info {
-	display: flex;
-	margin-top: 2%;
-	height: 25%;
-	width: 95%;
-}
-#statics {
-	justify-content: center;
-	flex: 55%;
-}
-#country {
-	flex: 40%;
-}
-/*地图栏*/
-.left .countryMap {
-	width: 95%;
-	height: 69.3%;
-}
 /*柱状图*/
 .zzt {
 	width: 95%;

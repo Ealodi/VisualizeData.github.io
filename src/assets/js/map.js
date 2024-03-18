@@ -1,67 +1,52 @@
+var svgUrl = 'https://img.hcharts.cn/mapdata/countries/ru/ru-all.svg';
 
-$(function(){
+var svgContainer = d3.select("#map-container").append("svg")
+    .attr("width", '100%')
+    .attr("height", '100%');
 
+d3.xml(svgUrl).then(function (xml) {
+    var importedNode = document.importNode(xml.documentElement, true);
+    svgContainer.node().appendChild(importedNode);
 
-    initMap();
+    const mapGroup = svgContainer.select("g");
 
+    svgContainer.call(d3.zoom()
+        .scaleExtent([0.2, 8])
+        .on("zoom", function (event) {
+            mapGroup.attr("transform", event.transform);
+        })
+    );
 
+    svgContainer.selectAll("path")
+        .attr("stroke", "#4f4343")
+        .attr("stroke-width", 1)
+        .style("fill", function (d) {
+            // Generate a random color and lower the saturation and brightness
+            var randomValue = Math.random();
+            var randomColor = d3.interpolateYlOrRd(randomValue);
 
+            // Lower the saturation and brightness
+            var hslColor = d3.hsl(randomColor);
+            hslColor.s = 0.5; // Lower saturation
+            hslColor.l = 0.6; // Lower brightness
 
-
-})
-//地图界面高度设置
-
-
-
-//加载地图
-function initMap(){
-// 百度地图API功能
-    var map = new BMap.Map("map_div");    // 创建Map实例
-    map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);  // 初始化地图,设置中心点坐标和地图级别
-    //添加地图类型控件
-    var size1 = new BMap.Size(10, 50);
-    map.addControl(new BMap.MapTypeControl({
-        offset: size1,
-        mapTypes:[
-            BMAP_NORMAL_MAP,
-            BMAP_HYBRID_MAP,
-
-        ]}));
-    // 编写自定义函数,创建标注
-    function addMarker(point){
-        var marker = new BMap.Marker(point);
-        map.addOverlay(marker);
-    }
-    // 随机向地图添加25个标注
-    var bounds = map.getBounds();
-    var sw = bounds.getSouthWest();
-    var ne = bounds.getNorthEast();
-    var lngSpan = Math.abs(sw.lng - ne.lng);
-    var latSpan = Math.abs(ne.lat - sw.lat);
-    for (var i = 0; i < 25; i ++) {
-        var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
-        addMarker(point);
-    };
-
-    map.setCurrentCity("北京");          // 设置地图显示的城市 此项是必须设置的
-    map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
-    //设备地图颜色
-    var mapStyle={
-        style:"midnight"
-    };
-    map.setMapStyle(mapStyle);
-
-
-
-
-
-//加载城市控件
-    var size = new BMap.Size(10, 50);
-    map.addControl(new BMap.CityListControl({
-        anchor: BMAP_ANCHOR_TOP_LEFT,
-        offset: size,
-
-
-    }));
-}
-
+            return hslColor;
+        })
+        .on("mouseover", function (d, i) {
+            var bounds = this.getBBox();
+            var centerX = bounds.x + bounds.width / 2;
+            var centerY = bounds.y + bounds.height / 2;
+            d3.select(this)
+                .transition()
+                .duration(100)
+                .attr("stroke-width", "3")
+                .attr("stroke", "yellow");
+        })
+        .on("mouseout", function (d, i) {
+            d3.select(this)
+                .transition()
+                .duration(200)
+                .attr("stroke-width", 1)
+                .attr("stroke", "#4f4343");
+        });
+});

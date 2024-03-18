@@ -26,7 +26,7 @@
     </el-row>
     <el-row>
       <el-col :span="6">
-        <el-statistic title="国土面积(万㎢)" :value="1707.54" :precision="2"/>
+        <el-statistic title="面积(万㎢)" :value="1707.54" :precision="2"/>
       </el-col>
       <el-col :span="6">
         <el-statistic title="人口总数(亿)" :value="1.472" :precision="3"/>
