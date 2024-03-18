@@ -30,8 +30,8 @@ export default {
     },
     mounted() {
         this.d3 = document.createElement('script');
-        d3.async = true;
-        d3.src = 'https://d3js.org/d3.v5.min.js';
+        this.d3.async = true;
+        this.d3.src = 'https://d3js.org/d3.v5.min.js';
         document.body.appendChild(this.d3);
         this.loadExternalScripts();
     },
