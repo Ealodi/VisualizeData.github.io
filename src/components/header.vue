@@ -3,7 +3,7 @@
         <ul>
             <li class="nav_active nav_0"><i class="nav_1"></i>数据总览</li>
             <li class="nav_0"><i class="nav_2" id="nav_2"></i>河流词云</li>
-            <li class="nav_0"><i class="nav_3" id="nav_3"></i>文章对比</li>
+            <li class="nav_0" id="select_nav"><i class="nav_3" id="nav_3"></i>文章对比</li>
         </ul>
     </div>
     <div class="header_center">

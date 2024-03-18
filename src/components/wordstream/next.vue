@@ -1,5 +1,5 @@
 <template>
-    <button class="cta">
+    <button class="cta" @click="triggerClickEvent">
         <span class="span">进入对比</span>
         <span class="second">
           <svg width="50px" height="20px" viewBox="0 0 66 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -14,7 +14,12 @@
 </template>
 <script>
   export default {
-
+    methods: {
+        triggerClickEvent() {
+            // 在这里触发其他元素的点击事件
+            document.getElementById('select_nav').click();
+        }
+    }
   }
 </script>
     <style scoped>
@@ -30,6 +35,7 @@
       box-shadow: 6px 6px 0 black;
       transform: skewX(-15deg);
       border: none;
+      cursor: pointer;
     }
     
     .cta:focus {

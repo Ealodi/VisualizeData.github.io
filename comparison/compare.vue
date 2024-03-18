@@ -4,7 +4,7 @@
         <div class="card">
           <img src="./images/img1.jpg" alt="img1">
           <div class="card_content">
-            <p class="card_title">关于日本核污水排放</p>
+            <p class="card_title">福岛核污染水再次泄漏印证了三个判断</p>
             <p class="card_description"> 来源：中国新闻网</p>
             <p class="card_description"> 时间：2023/12/1</p>
           </div>
@@ -15,8 +15,8 @@
         <div class="card">
           <img src="./images/img2.jpg" alt="img2">
           <div class="card_content">
-            <p class="card_title">核污水排放的影响</p>
-            <p class="card_description"> 来源：新浪新闻</p>
+            <p class="card_title">这起事故戳穿了日方关于核污染水的两个谎言</p>
+            <p class="card_description"> 来源：澎湃新闻</p>
             <p class="card_description"> 时间：2023/12/9</p>
           </div>
         </div>

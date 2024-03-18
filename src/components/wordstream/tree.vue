@@ -15,7 +15,11 @@
           />
         </el-select>
         <ul v-infinite-scroll="load" class="infinite-list" style="overflow: auto">
-          <li v-for="item in tops" :key="item" class="infinite-list-item"><p>{{ item }}</p></li>
+          <li v-for="item in tops" :key="item" class="infinite-list-item">
+            <el-radio-group v-model="selectedItems1">
+              <el-radio :label="item" :value="item"></el-radio>
+            </el-radio-group>
+          </li>
         </ul>
       </div>
       <Next />
@@ -37,7 +41,11 @@
         />
       </el-select>
       <ul v-infinite-scroll="load" class="infinite-list" style="overflow: auto">
-        <li v-for="item in bottoms" :key="item" class="infinite-list-item"><p>{{ item }}</p></li>
+        <li v-for="item in bottoms" :key="item" class="infinite-list-item">
+          <el-radio-group v-model="selectedItems2">
+            <el-radio :label="item" :value="item"></el-radio>
+          </el-radio-group>
+        </li>
       </ul>
     </div>
   </div>
@@ -52,12 +60,12 @@ const count = ref(0)
 const load = () => {
   count.value += 2
 }
-const value = ref('新浪新闻')
+const value = ref('中新网')
 const value2 = ref('澎湃新闻')
 const options = [
   {
     value: 'Option1',
-    label: '新浪新闻',
+    label: '央视新闻',
   },
   {
     value: 'Option2',
@@ -83,6 +91,7 @@ const options2 = [
   }
 ]
 const tops = [
+    "福岛核污染水再次泄漏印证了三个判断",
     "亮眼数据勾勒“植”此青绿成绩单 逐绿而行擦亮高质量发展底色",
     "外交部：奉劝某些域外国家不要挑事生非 不要成为南海的搅局者和肇事方",
     "中国饭店协会倡议住宿企业便捷国际卡支付",
@@ -111,6 +120,7 @@ const tops = [
     "今年前2个月 粤港澳大湾区9市进出口总值1.29万亿元"
 ]
 const bottoms = [
+    "这起事故戳穿了日方关于核污染水的两个谎言",
     "十四届全国人大二次会议在京闭幕",
     "时政微纪录丨春天的盛会 习近平2024年“两会时间”",
     "广州交警：一汽车与行人和电动自行车发生碰撞，致11人受伤",
@@ -138,26 +148,42 @@ const bottoms = [
     "走出“代工”，制造业出海如何打造“高端品牌”？",
     "特斯拉德国工厂供电恢复，供电系统曾在上周遭破坏"
 ]
+const selectedItems1 = ref(tops[0])
+const selectedItems2 = ref(bottoms[0])
 </script>
 
 <style scoped>
+.custom-radio input[type="radio"] {
+  border-color: #ff0000; /* 设置圆形框的颜色为红色 */
+}
 .infinite-list {
   list-style: none;
   padding: 0;
   overflow: auto;
 }
-
+.infinite-list .infinite-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 30px;
+  width: 100%;
+  background: var(--el-color-primary-light-9);
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 0px;
+  margin-top: 0px;
+  color: var(--el-color-primary);
+}
 .infinite-list-item {
   width: 200px; /* 固定宽度 */
   overflow: hidden; /* 隐藏溢出部分 */
   white-space: nowrap; /* 禁止换行 */ 
   font-size: 14px;
   position: relative;
+  display: flex;
 }
 .infinite-list-item :hover {
   cursor: pointer;
-  background-color: steelblue;
-  color: aliceblue;
 }
 .infinite-list-item p{
   position: absolute;
@@ -216,19 +242,7 @@ const bottoms = [
   list-style: none;
   padding: 0;
 }
-.infinite-list .infinite-list-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 30px;
-  width: 100%;
-  background: var(--el-color-primary-light-9);
-  margin-top: 5px;
-  margin-bottom: 5px;
-  margin-left: 0px;
-  margin-top: 0px;
-  color: var(--el-color-primary);
-}
+
 .infinite-list .infinite-list-item + .list-item {
   margin-top: 10px;
 }
