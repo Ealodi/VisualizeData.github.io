@@ -52,3 +52,8 @@ body {
 .scene-container {
     background-color: transparent;
 }
+.connecting-line:hover {
+    stroke-width: 3px;
+    stroke: red;
+    cursor: pointer;
+}

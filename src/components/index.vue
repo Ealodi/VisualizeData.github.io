@@ -2,11 +2,11 @@
     <div class="div_any">
         <div class="div_any01_left">
             <div class="div_any_child">
-                <div class="div_any_title"><img src="./src/assets/img/zhuxingduidietu.png">媒体新闻统计 </div>
+                <button class="div_any_title"><img src="../assets/img/zhuxingduidietu.png">媒体新闻统计 </button>
                 <Zzt />
             </div>
             <div class="div_any_child">
-                <div class="div_any_title"><img src="./src/assets/img/yuanhuantu.png">新闻主题环图 </div>
+                <button  class="div_any_title"><img src="../assets/img/yuanhuantu.png">新闻主题环图 </button >
                 <Circle />
             </div>
         </div>
@@ -15,12 +15,12 @@
         </div>
         <div class="div_any01_right">
             <div class="div_any_child">
-                <div class="div_any_title"><img src="./src/assets/img/meiguitu.png">重点人物玫瑰图 </div>
+                <button  class="div_any_title"><img src="../assets/img/meiguitu.png">重点人物玫瑰图 </button >
                 <MeiGui />
                 <!-- <div id="rose-chart" style="width: 100%; height: 100%;background-color: transparent;"></div> -->
             </div>
             <div class="div_any_child">
-                <div class="div_any_title"><img src="./src/assets/img/ciyunguanli.png">热词词云 </div>
+                <button  class="div_any_title"><img src="../assets/img/ciyunguanli.png">热词词云 </button >
                 <div id="char4" class="p_chart">
                     <wordcloud />
                 </div>
@@ -87,7 +87,7 @@ export default {
     0px -10px 15px #034c6a inset, /*ä¸Šè¾¹é˜´å½±*/
     10px 0px 15px #034c6a inset, /*å³è¾¹é˜´å½±*/
     0px 10px 15px #034c6a inset;
-    border: 1px solid #a4c5d4;
+    border: 1px solid #050b71f2;
     box-sizing: border-box;
     position: relative;
     margin-top: 25px;
@@ -109,19 +109,38 @@ export default {
     width: 98% !important;
 }
 .div_any_title{
-    background-color: #86181800;
-    border: 1px solid #a4c5d4;
-    border-radius: 18px;
-    position: absolute;
-    height: 35px;
-    width: 60%;
-    top:-15px;
-    color: #ffffff;
-    font-weight: bold;
-    font-size: 16px;
-    left: 20%;
-    line-height: 35px;
-    text-align: center;
+   background: #097f7b;
+   border: 1px solid #050b71f2;
+   /* border-radius: 18px; */
+   position: absolute;
+   height: 35px;
+   width: 60%;
+   top:-15px;
+   color: #ffffff;
+   left: 20%;
+
+   z-index: 1;
+   --curve-size: .5em;
+   padding: .5em 1.5em;
+   font-size: 16px;
+   border: 0;
+   font-weight: bold;
+
+margin-top: -105x; 
+   text-align: center;
+   clip-path: polygon(
+       /* Top-left */
+       0% var(--curve-size),
+
+       var(--curve-size) 0,
+       /* top-right */
+       100% 0,
+       100% calc(100% - var(--curve-size)),
+
+       /* bottom-right 1 */
+       calc(100% - var(--curve-size)) 100%,
+       /* bottom-right 2 */
+       0 100%);
 }
 .div_any_title img{
     width: 18px;

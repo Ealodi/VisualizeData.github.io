@@ -135,6 +135,7 @@ function connectCircles(targetSelector, clickedCircle) {
                 }
             });
     });
+    appendLineHoverText();
 }
 // 从文件中读取文本
 function readText(reaction){
@@ -175,4 +176,29 @@ function replaceSpecialWord(reaction) {
                 block.html(text);
             });
         });
+}
+function appendLineHoverText(){
+    // 选中所有类名为connecting-line的路径
+    var lines = d3.selectAll(".connecting-line");
+
+    // 添加文本元素来显示数字
+    lines.each(function() {
+        var line = d3.select(this);
+        var lineLength = this.getTotalLength(); // 获取路径的总长度
+
+        // 添加文本元素并设置位置和文本内容
+        line.parent().append("text")
+            .attr("class", "line-label")
+            .attr("x", function() {
+                // 将数字放在路径的中间位置
+                var midpoint = line.node().getPointAtLength(lineLength / 2);
+                return midpoint.x;
+            })
+            .attr("y", function() {
+                var midpoint = line.node().getPointAtLength(lineLength / 2);
+                return midpoint.y;
+            })
+            .text("YourNumberHere");
+    });
+
 }

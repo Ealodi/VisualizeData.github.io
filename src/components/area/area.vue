@@ -2,7 +2,7 @@
     <div class="bg">
         <div class="left">
 			<div class="select area">
-				<SelectMore />
+				<SelectMore @mtValueChange="changeData"/>
 			</div>
             <div class="countryMap area">
                 <h3>国家地图</h3>
@@ -65,18 +65,17 @@ import Map from './map.vue'
 import Statistic from './statistic.vue'
 import Zhuzt from './zzt.vue'
 import SelectMore from './select.vue'
-import * as d3 from 'd3'; // 导入 D3 库
 export default {
     components: {
         Country,
         Lunbo,
         Leida,
-        Loudou,
+        Loudou,	
         Map,
         Statistic,
         Zhuzt,
 		SelectMore
-    }
+    },
 }
 </script>
 <style scoped>
@@ -137,9 +136,9 @@ h3{
 	 }
 .area {
 	position: relative;
-	box-shadow: 5px 10px 10px #9f9f9f;
+	/* box-shadow: 5px 10px 10px #9f9f9f; */
     /* border: 1px solid #cbcbcb; */
-	border: 1px solid #a4c5d4;
+	border: 1px solid rgba(14,253,255,0.5);
 	padding: 5px;
 	overflow: hidden;
 }

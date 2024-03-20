@@ -32,13 +32,13 @@ export default {
             var myChart = echarts.init($("#char3")[0]);
 
             // 指定图表的配置项和数据
-            $.getJSON('/src/assets/json/mgt.json', function(data) {
+            $.getJSON('/src/assets/json/person.json', function(data) {
                 var tl = [];
                 var countries = data[year][month];
                 for (var country in countries) {
                     tl.push({
                         name: country,
-                        value: Math.log(countries[country])
+                        value: countries[country]
                     });
                 }
                 var option = {

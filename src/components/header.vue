@@ -7,8 +7,9 @@
         </ul>
     </div>
     <div class="header_center">
-        <h2><strong>媒体对比新闻可视分析系统</strong></h2>
-        <p class="color_font"><small>Comprehensive service platform for smart tourism</small></p>
+        <h2><strong>新闻舆论可视化系统</strong></h2>
+        <p class="color_font"><small>News public opinion visualization system
+</small></p>
     </div>
     <div class="nav">
         <ul> 

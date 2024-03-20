@@ -354,19 +354,23 @@ footer.example{
     align-items: flex-start;
     width: 1000px;
     height: 600px;
-    box-shadow: 5px 10px 18px #9f9f9f;
+    /* box-shadow: 5px 10px 18px #9f9f9f; */
     border: 1px solid #cbcbcb;
     margin-left: 2%;
     margin-right: 2%;
+    border-radius: 10px;
 }
 #mainsvg {
     order: 1;
+    border-radius: 10px;
 }
 #bottomsvg {
     order: 2;
+    border-radius: 10px;
 }
 .svg_{
-    background-color: white;
+    background-color:  rgb(184, 212, 226);
     overflow-x: auto;
     left: 0%;
+    border-radius: 10px
 }

@@ -1,36 +1,42 @@
 <template>
-    <div class="wave">
-      <div class="cardArea">
-        <div class="card">
-          <img src="./images/img1.jpg" alt="img1">
-          <div class="card_content">
-            <p class="card_title">福岛核污染水再次泄漏印证了三个判断</p>
-            <p class="card_description"> 来源：中国新闻网</p>
-            <p class="card_description"> 时间：2023/12/1</p>
-          </div>
-    
-          
-        </div>
-        <Button @click="changeView" />
-        <div class="card">
-          <img src="./images/img2.jpg" alt="img2">
-          <div class="card_content">
-            <p class="card_title">这起事故戳穿了日方关于核污染水的两个谎言</p>
-            <p class="card_description"> 来源：澎湃新闻</p>
-            <p class="card_description"> 时间：2023/12/9</p>
-          </div>
+  <div class="wave">
+    <div class="cardArea">
+      <div class="canvasContainer">
+        <div class="canvasLeft"></div> <!-- 左侧画布容器 -->
+      </div>
+      <div class="card">
+        <img src="./images/img1.jpg" alt="img1">
+        <div class="card_content">
+          <p class="card_title">“福岛核污染水再次泄漏印证了三个判断”</p>
+          <p class="card_description">来源：中国新闻网</p>
+          <p class="card_description">时间：2023/12/1</p>
         </div>
       </div>
-      <div class="container4">
-        <div id="card3"></div>
-        <div class="two" id="paintArea">
-          <div class="circles"></div>
+      <Button @click="changeView" />
+      <div class="card">
+        <img src="./images/img2.jpg" alt="img2">
+        <div class="card_content">
+          <p class="card_title">“这起事故戳穿了日方关于核污染水的两个谎言”</p>
+          <p class="card_description">来源：澎湃新闻</p>
+          <p class="card_description">时间：2023/12/9</p>
         </div>
-        <div id="card4"></div>
       </div>
+      <div class="canvasContainer">
+        <div class="canvasRight"></div> <!-- 右侧画布容器 -->
       </div>
+    </div>
+    <div class="container4">
+      <div id="card3"></div>
+      <div class="two" id="paintArea">
+        <div class="circles"></div>
+      </div>
+      <div id="card4"></div>
+    </div>
+  </div>
 </template>
+
 <script>
+
 import * as d3 from 'd3'; // 导入 D3 库
 import Button from './button.vue'
 import * as echarts from 'echarts'
@@ -81,51 +87,72 @@ export default {
         var chart1 = echarts.init(line1.node());
         var chart2 = echarts.init(line2.node());
         
-
         var option1 = {
-            grid: {
-                top: '5%',
-            },
-            xAxis: {
-                type: 'value',
-                position: 'top',
-                axisLabel: {
-                    rotate: 90
-                }
-            },
-            yAxis: {
-                type: 'category',
-                data: ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5','Category 6','Category 7','Category 8','Category 9',]
-            },
-            series: [{
-                type: 'line', // 将图表类型改为折线图
-                data: [150, 200, -350, 400, 500,-200,100,40,300]
-            }]
-        };
-        chart1.setOption(option1);
+    grid: {
+        top: '-1%',
+    },
+    xAxis: {
+        // show: false,  // 隐藏X轴
+        type: 'value',
+        position: 'top',
+        min: -200, // 设置 x 轴最小值为 -200
+        max: 200, // 设置 x 轴最大值为 200
+        axisLabel: {
+            rotate: 90
+        }
+    },
+    yAxis: {
+      // show: false,  // 隐藏X轴
+        type: 'value', // 修改 y 轴类型为 value
+        min: 0, // 设置 y 轴最小值为 0
+        max: 1000, // 设置 y 轴最大值为 1000
+        axisLabel: {
+            rotate: 90
+        }
+      
+    },
+    series: [{
+        type: 'line', // 将图表类型改为折线图
+        connectNulls: true, // 连接空值
+        data: [[200, 25], [80, 165], [110, 300], [-175, 440],[-165, 590],[-70, 760],[-200, 920],] // 修改数据格式为 [x, y]
+    }]
+};
 
-        var option2 = {
-            grid: {
-                  top: '5%',
-            },
-            xAxis: {
-                type: 'value',
-                position: 'top',
-                inverse: true, // 反向显示 x 轴刻度
-                axisLabel: {
-                    rotate: 90
-                }
-            },
-            yAxis: {
-                type: 'category',
-                data: ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5','Category 6','Category 7','Category 8','Category 9',]
-            },
-            series: [{
-                type: 'line', // 将图表类型改为折线图
-                data: [0, 100, -250, 22, 500,-200,100,40,300]
-            }]
-        };
-        chart2.setOption(option2);
+chart1.setOption(option1);
+
+
+var option2 = {
+    grid: {
+        top: '-1%',
+    },
+    xAxis: {
+        // show: false,  // 隐藏X轴
+        type: 'value',
+        position: 'top',
+        min: -200, // 设置 x 轴最小值为 -200
+        max: 200, // 设置 x 轴最大值为 200
+        axisLabel: {
+            rotate: 90
+        }
+    },
+    yAxis: {
+      // show: false,  // 隐藏X轴
+        type: 'value', // 修改 y 轴类型为 value
+        min: 0, // 设置 y 轴最小值为 0
+        max: 1000, // 设置 y 轴最大值为 1000
+        axisLabel: {
+            rotate: 90
+        }
+      
+    },
+    series: [{
+        type: 'line', // 将图表类型改为折线图
+        connectNulls: true, // 连接空值
+        data: [[-200, 0], [195, 155], [199, 320], [172, 440],[195, 590],[-140, 810],[-200, 940],] // 修改数据格式为 [x, y]
+    }]
+};
+
+chart2.setOption(option2);
       }
       else {
         const midArea = d3.select(".lineTog");
@@ -334,7 +361,7 @@ export default {
 </script>
 <style>
 .keyword {
-  background-color: grey;
+  background-color: rgb(229, 19, 19);
   color: white;
   user-select: auto;
   border-radius: 10%;
@@ -383,13 +410,14 @@ export default {
   overflow: visible; /* 允许超出边界 */
 }
 .positive {
-  background-color: rgb(31, 200, 31);
+  background-color: rgb(255, 81, 0);
   color: white;
   user-select: auto;
   border-radius: 10%;
 }
+/*  */
 .negative {
-  background-color: rgb(255, 81, 0);
+  background-color: rgb(31, 200, 31);
   color: white;
   user-select: auto;
   border-radius: 10%;
@@ -472,7 +500,7 @@ export default {
 }
 .card_title {
   margin: 0;
-  font-size: 24px;
+  font-size: 20px;
   color: #333;
   font-weight: 700;
 }
@@ -496,8 +524,9 @@ export default {
   width: 100%;
   height: 100%;
   /* background: linear-gradient(90deg, #3498DB, #E67E22); */
-  background-color: rgb(255, 255, 255);
-  opacity: 0.5;
+  background-color: rgb(184, 212, 226);
+  /* background-color:rgba(77, 128, 199, 0.729); */
+  /* opacity: 0.5; */
   font-family: Arial, sans-serif;
   overflow-y: auto;
 }

@@ -38,11 +38,12 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-import { ref } from 'vue'
+<script setup>
+import { ref,onMounted } from 'vue'
 import { useTransition } from '@vueuse/core'
 import { ChatLineRound, Menu } from '@element-plus/icons-vue'
-const source = ref(0),htvalue = ref(0),fcs = ref(0),data_source = "中新网"
+const source = ref(0),htvalue = ref(0),fcs = ref(0)
+let data_source = ref('中新网')
 const outputValue = useTransition(source, {
   duration: 1500,
 })
@@ -64,9 +65,39 @@ function calculateVariance(numbers) {
   const variance = squaredDifferencesSum / numbers.length;
   return variance;
 }
+onMounted(()=>{
+    const targetElement = document.querySelectorAll('.el-select__selected-item.el-select__placeholder span')[1];
+    if (targetElement) {
+        const observer = new MutationObserver(mutationsList => {
+            for (const mutation of mutationsList) {
+              if (mutation.type === 'childList') {
+                  //spanText.value = targetElement.innerText;
+                  var source_ = 'zhongxin';
+                  if (targetElement.innerText != '中新网')source_ = 'xinlang';
+                  data_source.value = targetElement.innerText;
+
+                  //outputValue.value = d3.select('#chartmain').attr('total');
+                  $.getJSON('/src/assets/json/' + source_ +'.json', function(data) {
+                        data = data['t1'];
+                        var total = 0
+                        data.forEach(element => {
+                            total += element;
+                        });
+                        source.value = total;
+                        fcs.value = calculateVariance(data);
+                  });
+              }
+            }
+        });
+        observer.observe(targetElement, { childList: true });
+    }
+});
 </script>
 
 <style>
+.el-statistic__number {
+  font-size: 19px;
+}
 .info_ {
   display: flex;
   flex-direction: column;

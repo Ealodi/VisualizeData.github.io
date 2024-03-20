@@ -42,8 +42,8 @@ export default {
                 }
                 var option = {
                     tooltip: {
-                    trigger: 'item',
-                    position: 'top-left',
+                        trigger: 'item',
+                        position: 'top-left',
                     },
                     grid: {
                         left: '10%',
@@ -53,38 +53,40 @@ export default {
                         orient: 'vertical',
                         right: 0,
                         textStyle: {
-                            color: '#fff', // Set the desired font color (e.g., red)
+                            color: '#fff', // 设置所需的字体颜色（例如，红色）
                         },
                     },
                     series: [
-                    {
-                        name: 'Access From',
-                        type: 'pie',
-                        left: 0,
-                        radius: ['40%', '80%'],
-                        avoidLabelOverlap: false,
-                        itemStyle: {
-                        borderRadius: 10,
-                        borderColor: '#fff',
-                        borderWidth: 0
-                        },
-                        label: {
-                        show: false,
-                        position: 'center',
-                        formatter: '{b}\n{d}%' // 显示名称和所占比例
-                        },
-                        emphasis: {
-                        label: {
-                            show: true,
-                            fontSize: 20,
-                            fontWeight: 'bold'
+                        {
+                            name: 'Access From',
+                            type: 'pie',
+                            left: 0,
+                            radius: ['40%', '80%'],
+                            avoidLabelOverlap: false,
+                            itemStyle: {
+                                borderRadius: 10,
+                                borderColor: '#fff',
+                                borderWidth: 0
+                            },
+                            label: {
+                                show: false,
+                                position: 'center',
+                                formatter: '{b}\n{d}%' // 显示名称和所占比例
+                            },
+                            emphasis: {
+                                label: {
+                                    show: true,
+                                    fontSize: 20,
+                                    fontWeight: 'bold'
+                                }
+                            },
+                            labelLine: {
+                                show: false
+                            },
+                            data: pieData,
+                            // 设置颜色
+                            color: ['#FF0000', '#FFA500', '#FFFF00', '#00FF00', '#00FFFF', '#0000FF','#800080', '#FF00FF'].map(color => `${color}99`)
                         }
-                        },
-                        labelLine: {
-                        show: false
-                        },
-                        data: pieData
-                    }
                     ]
                 };
             

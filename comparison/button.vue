@@ -13,7 +13,7 @@
               ></path>
             </svg>
           </a>
-          <div class="tooltip">Toggle</div>
+          <div class="tooltip">change</div>
         </li>
       </ul>
 </template>
@@ -24,6 +24,7 @@ export default{
 </script>
 
 <style scoped>
+
 ul {
     list-style: none;
   }

@@ -63,32 +63,88 @@ const load = () => {
 const value = ref('中新网')
 const value2 = ref('澎湃新闻')
 const options = [
-  {
+{
     value: 'Option1',
-    label: '央视新闻',
+    label: '中新网',
   },
   {
     value: 'Option2',
-    label: '腾讯新闻',
+    label: '新浪新闻',
   },
   {
     value: 'Option3',
-    label: '中新网',
-  }
-]
-const options2 = [
-  {
-    value: 'Option1',
     label: '澎湃新闻',
   },
   {
+    value: 'Option4',
+    label: '环球网',
+  },
+  {
+    value: 'Option5',
+    label: '央视新闻',
+  },
+  {
+    value: 'Option6',
+    label: '搜狐新闻',
+  },
+  {
+    value: 'Option7',
+    label: '腾讯新闻',
+  },
+  {
+    value: 'Option8',
+    label: '网易新闻',
+  },
+  {
+    value: 'Option9',
+    label: '今日头条',
+  },
+  {
+    value: 'Option10',
+    label: '长江日报',
+  },
+]
+const options2 = [
+{
+    value: 'Option1',
+    label: '中新网',
+  },
+  {
     value: 'Option2',
-    label: '新华网',
+    label: '新浪新闻',
   },
   {
     value: 'Option3',
+    label: '澎湃新闻',
+  },
+  {
+    value: 'Option4',
+    label: '环球网',
+  },
+  {
+    value: 'Option5',
+    label: '央视新闻',
+  },
+  {
+    value: 'Option6',
+    label: '搜狐新闻',
+  },
+  {
+    value: 'Option7',
+    label: '腾讯新闻',
+  },
+  {
+    value: 'Option8',
     label: '网易新闻',
-  }
+  },
+  {
+    value: 'Option9',
+    label: '今日头条',
+  },
+  {
+    value: 'Option10',
+    label: '长江日报',
+  },
 ]
 const tops = [
     "福岛核污染水再次泄漏印证了三个判断",
