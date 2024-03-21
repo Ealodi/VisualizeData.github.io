@@ -87,7 +87,7 @@ export default {
     0px -10px 15px #034c6a inset, /*ä¸Šè¾¹é˜´å½±*/
     10px 0px 15px #034c6a inset, /*å³è¾¹é˜´å½±*/
     0px 10px 15px #034c6a inset;
-    border: 1px solid #050b71f2;
+    border: 1px solid #F87B7E;
     box-sizing: border-box;
     position: relative;
     margin-top: 25px;
@@ -109,8 +109,10 @@ export default {
     width: 98% !important;
 }
 .div_any_title{
-   background: #097f7b;
-   border: 1px solid #050b71f2;
+   /* background: #097f7b; */
+   /* background: #F87B7E; */
+   background: #E86349;
+   border: 1px solid white;
    /* border-radius: 18px; */
    position: absolute;
    height: 35px;
@@ -156,7 +158,7 @@ margin-top: -105x;
     0px -10px 15px #034c6a inset, /*ä¸Šè¾¹é˜´å½±*/
     10px 0px 15px #034c6a inset, /*å³è¾¹é˜´å½±*/
     0px 10px 15px #034c6a inset;
-    border: 1px solid #a4c5d4;
+    border: 1px solid black;
     box-sizing: border-box;
     position: relative;
     margin-top: 25px;

@@ -42,7 +42,7 @@ export default {
   left: 50%;
   background-color: transparent;
   z-index: 1;
-  color: #fff;
+  color: #000000;
 }
 .slider:hover {
   opacity: 1;
@@ -53,7 +53,7 @@ export default {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #000;
+  background: #000000;
   cursor: pointer;
   border: 2px solid #ccd6f6;
 }
@@ -72,7 +72,7 @@ export default {
   cursor: pointer;
   background-color: rgba(1, 1, 1, 0);
   border: 1px solid #ccd6f6;
-  color: #ccd6f6;
+  color: #000000;
   outline: none;
   width: 4em;
   position: absolute;

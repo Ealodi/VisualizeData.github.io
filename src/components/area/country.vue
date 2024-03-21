@@ -28,7 +28,7 @@ const url =
     }
     .countryText {
         font-size: 18px;
-        color: #fff;
+        color: #000000;
         text-align: center;
         margin: 5px;
         align-items: center;

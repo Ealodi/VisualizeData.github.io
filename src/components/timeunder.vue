@@ -23,7 +23,10 @@ export default {
                     title: {
                 
                     },
-                    tooltip: {},
+                    tooltip: {
+
+                        
+                    },
                     grid: {
                         top: '50%',
                         left: '1%',  // 调整左边距

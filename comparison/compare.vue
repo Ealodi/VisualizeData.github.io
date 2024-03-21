@@ -180,7 +180,7 @@ chart2.setOption(option2);
         if (kwOrPa == 'kw'){
           if (reaction == 'left')this.loadLeftBlock();
           else this.loadRightBlock();
-          this.replaceKeyWords(reaction);
+          this.replaceKeyWords();
         }
         else this.replaceSpecialWord(reaction);
       });
@@ -300,6 +300,30 @@ chart2.setOption(option2);
               .attr('d', line)
               .attr('stroke', 'black')
               .attr('stroke-width', 1)
+              .on("mouseover", function() {
+                d3.select(this)
+                  .attr("stroke", "red")
+                  .attr("stroke-width", 2);
+                // 根据斜率计算文本位置
+                const textX = (startPoint.x + endPoint.x) / 2;
+                const textY = (startPoint.y + endPoint.y) / 2 - 5; // 偏移量可根据需要调整
+                // 添加文本显示连线数值
+                
+                svg.append("text")
+                    .attr("x", textX)
+                    .attr("y", textY)
+                    .attr("text-anchor", "middle")
+                    .attr("alignment-baseline", "middle")
+                    .text("0.972");
+              })
+              .on("mouseout", function() {
+                  d3.select(this)
+                      .attr("stroke", "black")
+                      .attr("stroke-width", 1);
+
+                  // 移除显示的文本
+                  svg.selectAll("text").remove();
+              })
               .transition()
               .delay(function(d, i) { return i * 200; }) // 每条线段的延迟时间
               .duration(200) // 动画持续时间
@@ -334,36 +358,70 @@ chart2.setOption(option2);
                     var sta = row[2];
                     if (sta == '消极')sta = 'negative';
                     else sta = 'positive';
-                    text = text.replace(new RegExp(word, 'g'), '<span class="' + sta + '">' + word + '</span>');
+                    text = text.replace(new RegExp(word, 'g'), '<span class="' + sta + ' wordspan">' + word + '</span>');
                 });
                 block.html(text);
             });
           });
     },
-    replaceKeyWords(reaction) {
-      var blockTexts = d3.selectAll("." + reaction +"-block");
+    replaceKeyWords() {
+      var blockTexts = d3.selectAll(".block_text");
       blockTexts.each(function() {
         const block = d3.select(this);
-        d3.json('/comparison/data/topic.json').then(data => {
-            const left_blocks = data[reaction];
-            left_blocks.forEach(block_keywords => {
-                var text = block.text();
-                block_keywords.forEach(kw => {
-                  text = text.replace(new RegExp(kw, 'g'), '<span class="keyword">' + kw + '</span>');
-                });
-                block.html(text);
-            });
+        var text = block.text();
+        d3.json('/comparison/data/keywords.json').then(data => {
+            for(const key in data){
+              if (data.hasOwnProperty(key)) {
+                  const values = data[key];
+                  for (const value of values) {
+                    text = text.replace(new RegExp(value, 'g'), '<span class="' + key + ' wordspan">' + value + '</span>');
+                  }
+              }
+            }
+            block.html(text);
         });
       });
+
     }
   }
 };
 </script>
 <style>
-.keyword {
-  background-color: rgb(229, 19, 19);
-  color: white;
+.connecting-line:hover{
+  cursor: pointer;
   user-select: auto;
+}
+.wordspan {
+  user-select: auto;
+}
+.wordspan:hover {
+  cursor: pointer; /* 悬浮时的鼠标指针样式 */
+  background-color: steelblue;
+  color: #fff;
+}
+.KW_loacation {
+  text-decoration: red wavy underline 2px;
+}
+.KW_person {
+  text-decoration: double underline 3px;
+}
+.keywords {
+  text-decoration: green wavy underline 1.5px;
+}
+.KW_time {
+  background-color: rgb(108, 85, 85);
+  color: white;
+  border-radius: 10%;
+}
+.positive {
+  background-color: rgb(255, 81, 0);
+  color: white;
+  border-radius: 10%;
+}
+/*  */
+.negative {
+  background-color: rgb(31, 200, 31);
+  color: white;
   border-radius: 10%;
 }
 .block_text {
@@ -408,26 +466,6 @@ chart2.setOption(option2);
 }
 #lineSvg {
   overflow: visible; /* 允许超出边界 */
-}
-.positive {
-  background-color: rgb(255, 81, 0);
-  color: white;
-  user-select: auto;
-  border-radius: 10%;
-}
-/*  */
-.negative {
-  background-color: rgb(31, 200, 31);
-  color: white;
-  user-select: auto;
-  border-radius: 10%;
-}
-.block_text span:hover {
-  cursor: pointer; /* 悬浮时的鼠标指针样式 */
-  background-color: steelblue;
-}
-.connecting-line :hover{
-  stroke-width: 2px;
 }
 .circles {
   position: relative;
@@ -524,7 +562,7 @@ chart2.setOption(option2);
   width: 100%;
   height: 100%;
   /* background: linear-gradient(90deg, #3498DB, #E67E22); */
-  background-color: rgb(184, 212, 226);
+  background-color: #DDFAFB;
   /* background-color:rgba(77, 128, 199, 0.729); */
   /* opacity: 0.5; */
   font-family: Arial, sans-serif;

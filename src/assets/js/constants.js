@@ -1,5 +1,5 @@
 export const GLOBE_IMAGE_URL =
-  '/src/assets/pic/earth-night.jpg';
+  '/src/assets/pic/D2.png';
 export const BACKGROUND_IMAGE_URL = '/src/assets/pic/touming.png';
  // '/assets/pic/night-sky.png';
 export const GEOJSON_URL =

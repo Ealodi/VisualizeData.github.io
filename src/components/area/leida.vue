@@ -28,6 +28,11 @@ function loaddata(source){
                 fontSize: 12,
                 fontFamily: 'PingFangSC-Regular, PingFang SC;',
               },
+              textStyle: {
+        color: "#000", // 将字体颜色改为黑色
+        fontSize: 12,
+        fontFamily: 'PingFangSC-Regular, PingFang SC;',
+      },
             },
             axisLine: {
               lineStyle: {
@@ -65,7 +70,7 @@ function loaddata(source){
               symbolSize: 7,
               areaStyle: { color: "rgba(71,237,252,.3)" },
               lineStyle: {
-                color: "#47EDFC",
+                color: "#E86349",
                 width: 1
               },
               label: {
@@ -73,7 +78,7 @@ function loaddata(source){
                 formatter: function (params) {
                   return params.value;
                 },
-                color: '#fff',
+                color: '#000',
               }
             }],
           }],

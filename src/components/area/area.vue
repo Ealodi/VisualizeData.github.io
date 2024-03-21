@@ -107,7 +107,7 @@ export default {
 }
 h3{
 	font-size:14px;
-	color:#fff;
+	color:#000000;
 	margin: 0;
 }	
 @-webkit-keyframes widthMove1 { 
@@ -138,7 +138,7 @@ h3{
 	position: relative;
 	/* box-shadow: 5px 10px 10px #9f9f9f; */
     /* border: 1px solid #cbcbcb; */
-	border: 1px solid rgba(14,253,255,0.5);
+	border: 1px solid #213271;
 	padding: 5px;
 	overflow: hidden;
 }

@@ -52,8 +52,8 @@ export default {
                     legend: {
                         orient: 'vertical',
                         right: 0,
-                        textStyle: {
-                            color: '#fff', // 设置所需的字体颜色（例如，红色）
+                        textStyle : {
+                            color : 'black',
                         },
                     },
                     series: [
@@ -85,7 +85,8 @@ export default {
                             },
                             data: pieData,
                             // 设置颜色
-                            color: ['#FF0000', '#FFA500', '#FFFF00', '#00FF00', '#00FFFF', '#0000FF','#800080', '#FF00FF'].map(color => `${color}99`)
+                            // color: ['#FF0000', '#FFA500', '#FFFF00', '#00FF00', '#00FFFF', '#0000FF','#800080', '#FF00FF']
+                            color: [ '#F1DC13', '#05299B','#5FA042', '#4EAAC1', '#DF9F3E','#CC301A' ,'#E64163','#365535']
                         }
                     ]
                 };

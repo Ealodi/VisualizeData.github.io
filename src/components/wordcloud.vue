@@ -316,7 +316,7 @@ import * as d3 from 'd3';
           this.tagAttrList[j].scale = per;
           this.tagAttrList[j].alpha = per;
  
-          this.tagAttrList[j].alpha = (this.tagAttrList[j].alpha - 0.6) * (10/6);
+          this.tagAttrList[j].alpha = (this.tagAttrList[j].alpha - 0.6) * (150);
         }
         this.doPosition();
         this.depthSort();
@@ -435,7 +435,7 @@ import * as d3 from 'd3';
       height: 50px;
       border-radius: 50%;
       text-align: center;
-      
+      /* opacity: 0;  */
       display: flex;
       align-items: center;
       justify-content: center;

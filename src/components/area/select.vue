@@ -78,7 +78,7 @@ p {
   flex: 30%;
   margin-top: 2%;
   font-size: 12px;
-  color: white;
+  color: rgb(0, 0, 0);
   justify-content: center;
   user-select: none;
 }

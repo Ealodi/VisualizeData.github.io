@@ -50,7 +50,7 @@ export default {
     flex: 35%;
 }
 .nav_active{
-    border-bottom: 4px solid #4b8df8;
+    border-bottom: 2px solid #4b8df8;
     box-shadow:none;
     box-sizing: border-box;
 }
@@ -117,7 +117,7 @@ export default {
 }
   
   .nav>ul>li:hover {
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 5px 15px rgba(31, 135, 161, 0.5);
     cursor: pointer;
   }
   
@@ -125,14 +125,14 @@ export default {
     border-color: #16b3ae;
     height: 100%;
     transform: translateX(0);
-    transition: .3s transform linear, .3s height linear .3s;
+    transition: .1s transform linear, .1s height linear .1s;
   }
   
   .nav>ul>li:hover:after {
     border-color: #16b3ae;
     height: 100%;
     transform: translateX(0);
-    transition: .3s transform linear, .3s height linear .5s;
+    transition: .1s transform linear, .1s height linear .1s;
   }
 .nav>ul>li i{
     width: 16px;

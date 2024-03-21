@@ -101,7 +101,7 @@ ul {
   }
   .example-2 .icon-content a[data-social="spotify"] .filled,
   .example-2 .icon-content a[data-social="spotify"] ~ .tooltip {
-    background-color: #1db954;
+    background-color: #E86349;
   }
   .example-2 .icon-content a[data-social="pinterest"] .filled,
   .example-2 .icon-content a[data-social="pinterest"] ~ .tooltip {

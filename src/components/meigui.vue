@@ -59,38 +59,55 @@ export default {
                         // x : 'right',
                         data: tl.map(item => item.name),
                         textStyle : {
-                            color : '#ffffff',
+                            color : 'black',
                         },
                         
                     },
                     series: [
-                        {
-                            name: '访问来源',
-                            type: 'pie',
-                            minAngle: 15, // 最小角度
-                            startAngle: 250, // 起始角度
-                            radius: [20, 120],  // 设置环形的内外半径
-                            roseType: 'radius', // radius: 扇区圆心角展现数据的百分比，可用于展现一种维度的数据。 area: 所有扇区圆心角相同，仅通过半径展现数据大小。
-                            label: {
-                                show: false
-                            },
-                            labelLine: {
-                                length: 0,  // 调整连接线的长度
-                                smooth: 0.05,  // 调整连接线的弧度
-                            },
-                            emphasis : {
-                                label : {
-                                    show : true,
-                                    position : 'center',
-                                    textStyle : {
-                                        fontSize : '11',
-                                    },
-                                }
-                            },
-                            data: tl
-                        }
-                    ]
-                };
+        {
+            name: '访问来源',
+            type: 'pie',
+            minAngle: 15,
+            startAngle: 250,
+            radius: [20, 120],
+            roseType: 'radius',
+            label: {
+                show: false
+            },
+            labelLine: {
+                length: 0,
+                smooth: 0.05,
+            },
+            emphasis: {
+                label: {
+                    show: true,
+                    position: 'center',
+                    textStyle: {
+                        fontSize: '11',
+                    },
+                }
+            },
+            data: tl,
+            // 修改颜色和透明度
+            // color: ['#FF0000', '#FFA500', '#FFFF00', '#00FF00', '#00FFFF', '#0000FF']
+            
+         
+           
+           
+            color: ['#CC301A', '#F1DC13', '#05299B', '#4EAAC1', '#222423', '#D69143']
+
+
+
+
+            // color: ['#403990', '#80A6E2', '#FBDD85', '#F46F43', '#CF3D3E', '#513C2C']
+// color: ['#536DE8', '#91A3BB', '#A0C1D4', '#B4CFE2', '#DAD8E5', '#0000FF']
+            // color: ['#1B1B1E', '#373F51', '#58A4B0', '#A9BCD0', '#D8DBE2', '#0000FF']
+             // 
+            // color: ['#EB7F00', '#F3FFE2', '#ACF0F2', '#1695A3', '#225378', '#0000FF']
+
+        }
+    ]
+};
                 // 使用刚指定的配置项和数据显示图表。
                 myChart.setOption(option);
                 window.addEventListener('resize', function () {myChart.resize();});

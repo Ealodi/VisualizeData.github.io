@@ -161,7 +161,7 @@ export default{
                         /*inside: true,*/
                         interval:0,
                         textStyle: {
-                            color: '#fff',
+                            color: '#000',
                             fontSize: 12
                             
                         }
@@ -174,7 +174,7 @@ export default{
                         symbol:['none', 'arrow'],
                         symbolOffset: 12,
                         lineStyle:{
-                            color: '#fff',
+                            color: '#000',
                         }
                     },
                     z: 10
@@ -187,15 +187,16 @@ export default{
                         symbol: ['none', 'arrow'],
                         symbolOffset: 12,
                         lineStyle:{
-                            color: '#fff',
+                            color: '#000',
                         }
                     },
                     axisTick: {
                         show: false
                     },
+    
                     axisLabel: {
                         textStyle: {
-                            color: '#fff',
+                            color: '#000',
                             fontSize: 12
                         }
                     }
@@ -233,7 +234,7 @@ export default{
                             show: true,
                             position: 'top',
                             textStyle: {
-                                color: '#fff',
+                                color: '#252C38',
                                 fontSize: 12
                             }
                         }

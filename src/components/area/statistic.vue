@@ -106,7 +106,7 @@ onMounted(()=>{
 .el-statistic__head,.el-statistic__number,
 .el-statistic__suffix,svg
 .el-statistic {
-  color: #fff!important; /* 设置字体颜色 */
+  color: #000000!important; /* 设置字体颜色 */
 }
 .el-row {
   flex: 40%;

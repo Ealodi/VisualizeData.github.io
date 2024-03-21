@@ -30,7 +30,8 @@
       font-family: 'Poppins', sans-serif;
       font-size: 20px;
       color: white;
-      background: #1f2ecb;
+      /* background: #1f2ecb; */
+      background: #252c38;
       transition: 1s;
       box-shadow: 6px 6px 0 black;
       transform: skewX(-15deg);
@@ -44,7 +45,7 @@
     
     .cta:hover {
       transition: 0.5s;
-      box-shadow: 10px 10px 0 #DDFAFB;
+      box-shadow: 10px 10px 0 #E86349;
     }
     
     .cta .second {
@@ -98,7 +99,7 @@
       }
     
       50% {
-        fill: #FBC638;
+        fill: #E86349;
       }
     
       100% {

@@ -33,7 +33,7 @@
   "devDependencies": {
     "@types/d3": "^7.4.3",
     "@vitejs/plugin-vue": "^5.0.3",
-    "vite": "^5.1.6",
+    "vite": "^5.2.2",
     "vue-cli-plugin-element-plus": "~0.0.13"
   },
   "type": "module"

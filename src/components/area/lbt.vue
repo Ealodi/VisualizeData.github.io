@@ -152,7 +152,7 @@ ul{
 }
 ul li {
     text-align:center;
-	color:#fff;
+	color:#000000;
     user-select: none;
 	font-size:0.06rem;
 	height:0.2rem;
@@ -173,16 +173,24 @@ ul li:nth-child(3) {
     text-overflow: ellipsis; /* 使用省略号表示溢出的文本 */
 }
 
-.ul_title {
+/* .ul_title {
     margin-top: 5px;
     background: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1));
     background: -ms-linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1));
     background: -webkit-linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1));
     background: -moz-linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.1));
+} */
+.ul_title {
+    margin-top: 5px;
+    background: linear-gradient(to right, rgba(232, 99, 73, 0.5), rgba(126, 16, 6, 0.8), rgba(232, 99, 73, 0.5));
+    background: -ms-linear-gradient(to right, rgba(232, 99, 73, 0.5), rgba(126, 16, 6, 0.8), rgba(232, 99, 73, 0.5));
+    background: -webkit-linear-gradient(to right, rgba(232, 99, 73, 0.5), rgba(126, 16, 6, 0.8), rgba(232, 99, 73, 0.5));
+    background: -moz-linear-gradient(to right, rgba(232, 99, 73, 0.5), rgba(126, 16, 6, 0.8), rgba(232, 99, 73, 0.5));
 }
 
+
 .ul_con{
-	border-bottom:0.008rem solid rgba(14,253,255,0.5);
+	border-bottom:0.008rem solid #213271;
     
 }
 .ul-title {
