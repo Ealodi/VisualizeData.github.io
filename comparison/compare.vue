@@ -114,7 +114,11 @@ export default {
     series: [{
         type: 'line', // 将图表类型改为折线图
         connectNulls: true, // 连接空值
-        data: [[200, 25], [80, 165], [110, 300], [-175, 440],[-165, 590],[-70, 760],[-200, 920],] // 修改数据格式为 [x, y]
+        data: [[200, 25], [80, 165], [110, 300], [-175, 440],[-165, 590],[-70, 760],[-200, 920],], // 修改数据格式为 [x, y]
+        areaStyle: {
+                    // 设置阴影颜色为灰色
+                    color: 'rgba(220, 220, 220, 0.3)'
+        }
     }]
 };
 
@@ -342,7 +346,7 @@ chart2.setOption(option2);
                     .attr("stroke", "red")
                     .attr("stroke-width", 2);
                 // 计算鼠标位置s
-                var mousePosition = d3.mouse(this); m
+                var mousePosition = d3.mouse(this);
                 var x = mousePosition[0] + 20;
                 var y = mousePosition[1] + 10;
                 svg.append("text")
