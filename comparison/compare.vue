@@ -237,6 +237,19 @@ chart2.setOption(option2);
       });
       this.reWritecircle();
     },
+    getChildIndex(nowElement,cate) {
+      var index = -1; // 默认设置索引为-1，表示未找到
+      const parentElement = d3.select('.circles');
+      // 使用 each() 方法遍历父元素的所有子元素
+      parentElement. selectAll(".circle_"+ cate).each(function(d, i) {
+          console.log(d);
+          // 检查当前子元素是否等于目标子元素
+          if (nowElement.node() === this) {
+              index = i;
+          }
+      });
+      return index;
+    },
     reWritecircle() {
       const vm = this;
       // 重写圆圈逻辑
@@ -251,15 +264,21 @@ chart2.setOption(option2);
               const circleClass = d3.select(this).attr("class").split(" ")[0];
               if (circleClass === "circle_right") {
                   // 如果点击的是 right_circle，则连接所有 left_circle
-                  vm.connectCircles(".circle_left", this);
+                  d3.json('/comparison/data/relation.json').then(data => {
+                    const index = vm.getChildIndex(d3.select(this),'right')
+                    vm.connectCircles(".circle_left", this ,data['right'][index]);
+                  });
               } else {
                   // 如果点击的是 left_circle，则连接所有 right_circle
-                  vm.connectCircles(".circle_right", this);
+                  d3.json('/comparison/data/relation.json').then(data => {
+                    const index = vm.getChildIndex(d3.select(this),'left')
+                    vm.connectCircles(".circle_right", this ,data['left'][index]);
+                  });
               }
               d3.select(this).attr("fill", "lightcoral");
           });
     },
-    connectCircles(targetSelector, clickedCircle) {
+    connectCircles(targetSelector, clickedCircle ,relationArray) {
       // 连接圆圈逻辑
       const container = d3.select("#paintArea");
       const targetCircles = container.selectAll(targetSelector);
@@ -300,30 +319,6 @@ chart2.setOption(option2);
               .attr('d', line)
               .attr('stroke', 'black')
               .attr('stroke-width', 1)
-              .on("mouseover", function() {
-                d3.select(this)
-                  .attr("stroke", "red")
-                  .attr("stroke-width", 2);
-                // 根据斜率计算文本位置
-                const textX = (startPoint.x + endPoint.x) / 2;
-                const textY = (startPoint.y + endPoint.y) / 2 - 5; // 偏移量可根据需要调整
-                // 添加文本显示连线数值
-                
-                svg.append("text")
-                    .attr("x", textX)
-                    .attr("y", textY)
-                    .attr("text-anchor", "middle")
-                    .attr("alignment-baseline", "middle")
-                    .text("0.972");
-              })
-              .on("mouseout", function() {
-                  d3.select(this)
-                      .attr("stroke", "black")
-                      .attr("stroke-width", 1);
-
-                  // 移除显示的文本
-                  svg.selectAll("text").remove();
-              })
               .transition()
               .delay(function(d, i) { return i * 200; }) // 每条线段的延迟时间
               .duration(200) // 动画持续时间
@@ -340,6 +335,32 @@ chart2.setOption(option2);
                       console.log("Animation complete!");
                   }
               });
+          svg.selectAll('.connecting-line')
+              .data(relationArray)
+              .on("mouseover", function(d,i) {
+                d3.select(this)
+                    .attr("stroke", "red")
+                    .attr("stroke-width", 2);
+                // 计算鼠标位置s
+                var mousePosition = d3.mouse(this); m
+                var x = mousePosition[0] + 20;
+                var y = mousePosition[1] + 10;
+                svg.append("text")
+                    .attr("x", x + "px")
+                    .attr("y", y + "px")
+                    .attr("text-anchor", "start")
+                    .attr("alignment-baseline", "middle")
+                    .text((d * 100).toString().slice(0,5) + '%');
+              })
+              .on("mouseout", function() {
+                  d3.select(this)
+                      .attr("stroke", "black")
+                      .attr("stroke-width", 1);
+
+                  // 移除显示的文本
+                  svg.selectAll("text").remove();
+              });
+              
       });
     },
     replaceSpecialWord(reaction) {
