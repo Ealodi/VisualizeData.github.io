@@ -237,7 +237,7 @@ function draw(data,flag,categories) {
 
     opacity = d3.scale.log()
         .domain([minSud, maxSud])
-        .range([0.4, 1]);
+        .range([0.8, 1]);
 
     var lineScale;
     if (fileName.indexOf("Huffington") >= 0) {
@@ -326,7 +326,7 @@ function draw(data,flag,categories) {
                 "class": "textData",
                 'font-family': font,
                 'font-size': function (d) {
-                    return d.fontSize * 1.1;
+                    return d.fontSize ;
                 },
                 "fill": function (d, i) {
                     return color(categories.indexOf(d.topic));
@@ -352,7 +352,7 @@ function draw(data,flag,categories) {
             })
             .select("text")
             .attr('font-size', function (d) {
-                return d.fontSize * 1.1;
+                return d.fontSize ;
             })
             .attr({
                 visibility: function (d) {
