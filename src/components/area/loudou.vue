@@ -52,7 +52,7 @@ export default {
                             data: nameArray,
                             top: 0,
                             textStyle: {
-                                color: '#fff',
+                                color: '#000',
                             },
                             left: 'right' // 调整图例位置为左对齐
                         },

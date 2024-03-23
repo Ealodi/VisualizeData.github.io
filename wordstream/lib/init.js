@@ -83,7 +83,7 @@ function draw(data,flag,categories) {
     ;
     var boxes = ws.boxes();
     var minSud = ws.minSud();
-    var maxSud = ws.maxSud();
+    var maxSud = ws.maxSud() * 2;
     maxFreq = ws.maxFreq();
 
     //set svg data.
@@ -326,7 +326,7 @@ function draw(data,flag,categories) {
                 "class": "textData",
                 'font-family': font,
                 'font-size': function (d) {
-                    return d.fontSize;
+                    return d.fontSize * 1.1;
                 },
                 "fill": function (d, i) {
                     return color(categories.indexOf(d.topic));
@@ -352,7 +352,7 @@ function draw(data,flag,categories) {
             })
             .select("text")
             .attr('font-size', function (d) {
-                return d.fontSize;
+                return d.fontSize * 1.1;
             })
             .attr({
                 visibility: function (d) {

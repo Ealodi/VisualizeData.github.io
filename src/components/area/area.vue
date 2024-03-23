@@ -202,7 +202,7 @@ h3{
 }
 
 .rightArea .lunbo{
-	border:0.008rem solid rgba(14,253,255,0.5);
+	border:1px solid #213271;
 	margin-top: 3%;
 	width: 95%;
 	flex: 38%;

@@ -5,8 +5,7 @@
         <div class="canvasLeft"></div> <!-- 左侧画布容器 -->
       </div>
       <div class="card">
-        <img src="./images/img1.jpg" alt="img1">
-        <div class="card_content">
+        <div class="card_content" id="card_left">
           <p class="card_title">“福岛核污染水再次泄漏印证了三个判断”</p>
           <p class="card_description">来源：中国新闻网</p>
           <p class="card_description">时间：2023/12/1</p>
@@ -14,8 +13,7 @@
       </div>
       <Button @click="changeView" />
       <div class="card">
-        <img src="./images/img2.jpg" alt="img2">
-        <div class="card_content">
+        <div class="card_content" id="card_right">
           <p class="card_title">“这起事故戳穿了日方关于核污染水的两个谎言”</p>
           <p class="card_description">来源：澎湃新闻</p>
           <p class="card_description">时间：2023/12/9</p>
@@ -92,7 +90,7 @@ export default {
         top: '-1%',
     },
     xAxis: {
-        // show: false,  // 隐藏X轴
+        // show: false,  
         type: 'value',
         position: 'top',
         min: -200, // 设置 x 轴最小值为 -200
@@ -102,7 +100,7 @@ export default {
         }
     },
     yAxis: {
-      // show: false,  // 隐藏X轴
+      // show: false, 
         type: 'value', // 修改 y 轴类型为 value
         min: 0, // 设置 y 轴最小值为 0
         max: 1000, // 设置 y 轴最大值为 1000
@@ -115,10 +113,7 @@ export default {
         type: 'line', // 将图表类型改为折线图
         connectNulls: true, // 连接空值
         data: [[200, 25], [80, 165], [110, 300], [-175, 440],[-165, 590],[-70, 760],[-200, 920],], // 修改数据格式为 [x, y]
-        areaStyle: {
-                    // 设置阴影颜色为灰色
-                    color: 'rgba(220, 220, 220, 0.3)'
-        }
+     
     }]
 };
 
@@ -126,11 +121,13 @@ chart1.setOption(option1);
 
 
 var option2 = {
+  // backgroundColor: 'rgba(220, 220, 220, 0.3)',
     grid: {
         top: '-1%',
     },
     xAxis: {
-        // show: false,  // 隐藏X轴
+      inverse: true, 
+        // show: false,  
         type: 'value',
         position: 'top',
         min: -200, // 设置 x 轴最小值为 -200
@@ -140,19 +137,21 @@ var option2 = {
         }
     },
     yAxis: {
-      // show: false,  // 隐藏X轴
+      // show: false,  
         type: 'value', // 修改 y 轴类型为 value
         min: 0, // 设置 y 轴最小值为 0
         max: 1000, // 设置 y 轴最大值为 1000
         axisLabel: {
             rotate: 90
         }
+        
       
     },
     series: [{
         type: 'line', // 将图表类型改为折线图
-        connectNulls: true, // 连接空值
-        data: [[-200, 0], [195, 155], [199, 320], [172, 440],[195, 590],[-140, 810],[-200, 940],] // 修改数据格式为 [x, y]
+        connectNulls: true, 
+        data: [[-200, 0], [195, 155], [199, 320], [172, 440],[195, 590],[-140, 810],[-200, 940],],
+      
     }]
 };
 
@@ -425,27 +424,27 @@ chart2.setOption(option2);
   color: #fff;
 }
 .KW_loacation {
-  text-decoration: red wavy underline 2px;
+  text-decoration: red wavy underline 3px;
 }
 .KW_person {
   text-decoration: double underline 3px;
 }
 .keywords {
-  text-decoration: green wavy underline 1.5px;
+  text-decoration: rgb(206, 96, 0) wavy underline 2px;
 }
 .KW_time {
-  background-color: rgb(108, 85, 85);
+  background-color: rgb(138, 48, 143);
   color: white;
   border-radius: 10%;
 }
 .positive {
-  background-color: rgb(255, 81, 0);
+  background-color: rgba(255, 38, 0, 0.955);
   color: white;
   border-radius: 10%;
 }
 /*  */
 .negative {
-  background-color: rgb(31, 200, 31);
+  background-color: rgb(31, 200, 130);
   color: white;
   border-radius: 10%;
 }
@@ -538,23 +537,44 @@ chart2.setOption(option2);
   box-shadow: 0 8px 16px black;
 }
 .card_content {
-  position: absolute;
+  /*position: absolute;*/
   width: 100%;
   height: 100%;
   padding: 20px;
   box-sizing: border-box;
-  background-color: #f2f2f2;
-  transform: rotateX(-90deg);
-  transform-origin: bottom;
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /*background-color: #f2f2f2;*/
+  /*transform: rotateX(-90deg);*/
+  /*transform-origin: bottom;*/
+  /*transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);*/
 }
+.card_content::before {
+  content: ""; /* 必须有 content 属性才能生效 */
+  position: absolute; /* 绝对定位，以覆盖 .card_content */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.2; /* 设置透明度 */
+  background-repeat: no-repeat;
+  z-index: -1; /* 将 ::before 伪元素置于底部 */
+}
+.card_content:hover {
+  background-color: #f2f2f2;
+}
+#card_left::before {
+  background-image: url('/comparison/images/img1.jpg');
+  background-size: cover;
+}
+#card_right::before {
+  background-image: url('/comparison/images/img2.jpg'); /* 设置背景图片 */
+  background-size: 85%;
+  left: 5%;
+}
+/*
 .card:hover .card_content{
   transform: rotateX(0deg);
   width: 100%;
-}
-.card:hover svg{
-  scale: 0;
-}
+}*/
 .card_description {
   margin: 10px 0 0;
   font-size: 14px;

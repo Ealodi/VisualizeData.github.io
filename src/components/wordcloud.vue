@@ -420,6 +420,8 @@ import * as d3 from 'd3';
     width: 100%;
     height: 100%;
     background:	#00000000;
+    top: 15%;
+    /* right:2% */
   }
  .cloud-box span{
       position: absolute;

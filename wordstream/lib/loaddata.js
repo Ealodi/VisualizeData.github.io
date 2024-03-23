@@ -1,3 +1,4 @@
+
 var maxWidth, maxHeight, maxTop;
 var totalData;
 

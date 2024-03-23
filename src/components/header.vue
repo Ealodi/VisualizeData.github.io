@@ -2,18 +2,18 @@
     <div class="nav">
         <ul>
             <li class="nav_active nav_0"><i class="nav_1"></i>数据总览</li>
-            <li class="nav_0"><i class="nav_2" id="nav_2"></i>河流词云</li>
+            <li class="nav_0"><i class="nav_2" id="nav_2"></i>主题对比</li>
             <li class="nav_0" id="select_nav"><i class="nav_3" id="nav_3"></i>文章对比</li>
         </ul>
     </div>
     <div class="header_center">
-        <h2><strong>新闻舆论可视化系统</strong></h2>
-        <p class="color_font"><small>News public opinion visualization system
+        <h2><strong>新闻舆情可视化对比系统</strong></h2>
+        <p class="color_font"><small>News and public opinion visualization comparison system
 </small></p>
     </div>
     <div class="nav">
         <ul> 
-            <li class="nav_0"><i class="zt"></i>地区页面</li>
+            <li class="nav_0"><i class="zt"></i>地区分析</li>
             <li class="nav_0"><i class="nav_8"></i>帮助  </li>
             <li class="nav_0"><i class="nav_4"></i>更多  </li>
         </ul>

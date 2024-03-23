@@ -46,7 +46,7 @@ export default {
                 const script = document.createElement('script');
                 url = url + `?v=${randomSuffix}`; // 使用随机数作为查询参数
                 script.src = url;
-                script.defer = true; // Load scripts asynchronously
+                //script.defer = true; // Load scripts asynchronously
                 script.onload = () => {
                     console.log(`${url} loaded successfully.`);
                     // You can add additional logic here if needed

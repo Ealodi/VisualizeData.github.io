@@ -1,6 +1,6 @@
 <template>
   <div class="ct">
-      <p>国家选择</p>
+      <p>年份选择</p>
       <el-select-v2
           v-model="value1"
           :options="options1"
@@ -27,7 +27,7 @@ import { ref } from 'vue'
 import axios from 'axios'
 
 const initials = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
-const value1 = ref('俄罗斯')
+const value1 = ref('2023')
 const value2 = ref('中新网')
 var options1 = ref([])
 const options2 = [
