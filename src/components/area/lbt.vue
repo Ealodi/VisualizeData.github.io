@@ -36,8 +36,8 @@ export default {
         $(".shu4").numScroll();
         $(".shu5").numScroll();
         $(".shu6").numScroll();
-        //this.postData();
         this.postData2();
+        //this.postData2();
     },
     methods: {
         postData() {
@@ -95,25 +95,25 @@ export default {
             window.location.href = url;
         },
         postData2() {
-            fetch("/api/getNews?keyword=%E4%BF%84%E4%B9%8C&curPage=1&sortField=0&searchFields=1&lang=cn", {
-                headers: {
-                    "accept": "application/json, text/javascript, */*; q=0.01",
-                    "accept-language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7",
-                    "cache-control": "no-cache",
-                    "pragma": "no-cache",
-                    "sec-ch-ua": "\" Not A;Brand\";v=\"99\", \"Chromium\";v=\"122\", \"Google Chrome\";v=\"122\"",
-                    "sec-ch-ua-mobile": "?0",
-                    "sec-ch-ua-platform": "\"Windows\"",
-                    "sec-fetch-dest": "empty",
-                    "sec-fetch-mode": "cors",
-                    "sec-fetch-site": "same-origin",
-                    "x-requested-with": "XMLHttpRequest"
-                },
-                referrer: "https://so.news.cn/",
-                referrerPolicy: "strict-origin-when-cross-origin",
-                method: "GET",
-                mode: "cors",
-                credentials: "include"
+            fetch("/api/getNews?keyword=%E4%BF%84%E4%B9%8C&curPage=1&sortField=1&searchFields=1&lang=cn", {
+            "headers": {
+                "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+                "cache-control": "max-age=0",
+                "sec-ch-ua": "\"Microsoft Edge\";v=\"123\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\"",
+                "sec-ch-ua-mobile": "?0",
+                "sec-ch-ua-platform": "\"Windows\"",
+                "sec-fetch-dest": "document",
+                "sec-fetch-mode": "navigate",
+                "sec-fetch-site": "none",
+                "sec-fetch-user": "?1",
+                "upgrade-insecure-requests": "1"
+            },
+            "referrerPolicy": "strict-origin-when-cross-origin",
+            "body": null,
+            "method": "GET",
+            "mode": "cors",
+            "credentials": "include"
             })
             .then(response => response.json())
             .then(data => {

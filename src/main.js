@@ -1,11 +1,11 @@
 // main.js
 import './assets/main.css'
-import { createApp } from '../node_modules/vue'
+import { createApp } from 'vue'
 import index from './components/index.vue'
 import header from './components/header.vue'
 import area from './components/area/area.vue'
-import ElementPlus from '../node_modules/element-plus'
-import '../node_modules/element-plus/dist/index.css'
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
 import compare from '../comparison/compare.vue'
 import wordstream from './components/wordstream/wordstream.vue'
 // 页面头

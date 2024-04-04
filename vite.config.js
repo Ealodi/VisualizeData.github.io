@@ -3,7 +3,6 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
-  base: './',
   define: {
     'process.env': {},
   },
@@ -16,6 +15,7 @@ export default defineConfig({
     }
   },
   server: {
+    port: 5173,
     proxy: {
       '/api': {
         target: 'https://so.news.cn',
@@ -25,10 +25,11 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: 'ts-super-web',
     rollupOptions: {
       input: {
-        index: './index.html'
+        index: './index.html',
+        area: './area.html',
+        wordstream: './wordstream.html',
       },
       external: ['vue', 'safe-buffer'],
       output: {
