@@ -1,6 +1,6 @@
 // main.js
 import './assets/main.css'
-import { createApp } from 'vue'
+import { createApp } from '../node_modules/vue'
 import index from './components/index.vue'
 import header from './components/header.vue'
 import area from './components/area/area.vue'
